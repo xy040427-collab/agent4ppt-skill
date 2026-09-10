@@ -8,7 +8,7 @@ Early preview · Host image generation and PPTX tools required · [中文说明]
 
 ## See what it makes
 
-[Explore the public gallery and download the sample decks](https://agent4ppt.ljj040427.chatgpt.site/)
+[Explore the public gallery and download the sample decks](https://agent4ppt.ljj040427.chatgpt.site/) · [Browse the Awesome Skills listing](https://www.awesomeskills.dev/en/skill/xy040427-collab-agent4ppt-skill)
 
 **10 scenarios × 3 selected slides**: comics, research meetings, technology launches, paper presentations, job introductions, club elections, business reviews, product ads, policy briefings and recruitment.
 
@@ -50,6 +50,8 @@ Run from the project where you want to use the skill (Node.js/npm and Git requir
 ```sh
 npx skills add xy040427-collab/agent4ppt-skill --skill agent4ppt-skill --agent codex
 ```
+
+The skill is also indexed in [Awesome Skills](https://www.awesomeskills.dev/en/skill/xy040427-collab-agent4ppt-skill) for people who prefer a directory search.
 
 The public repository was discovered and installed successfully into an isolated project on Windows on 2026-09-10. This verifies installation, not a fresh-host slide-generation run. The validation disabled installation telemetry. Other hosts can use the manual route below; image generation and PPTX authoring are still required.
 
