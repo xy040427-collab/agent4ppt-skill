@@ -14,6 +14,20 @@ Early preview · Host image generation and PPTX tools required · [中文说明]
 
 The 30 pages were exported and visually checked in PowerPoint 16.0. Representative titles, chart values and table cells were edited and saved in test copies. Layout corrections were made; these examples do not establish unattended first-pass quality. See [showcase evidence](docs/showcase.md).
 
+## Preview gallery
+
+Ten different visual directions. Each download contains three selected slides. Click a preview to download its PPTX.
+
+| | |
+|---|---|
+| **Cute comic**<br>[![Cute comic sample slide](https://agent4ppt.ljj040427.chatgpt.site/01-comic/preview/1.jpg)](https://github.com/xy040427-collab/agent4ppt-skill/releases/download/showcase-v1/01-comic.pptx) | **Research meeting**<br>[![Research meeting sample slide](https://agent4ppt.ljj040427.chatgpt.site/02-lab/preview/1.jpg)](https://github.com/xy040427-collab/agent4ppt-skill/releases/download/showcase-v1/02-lab.pptx) |
+| **Technology launch**<br>[![Technology launch sample slide](https://agent4ppt.ljj040427.chatgpt.site/03-launch/preview/1.jpg)](https://github.com/xy040427-collab/agent4ppt-skill/releases/download/showcase-v1/03-launch.pptx) | **Paper presentation**<br>[![Paper presentation sample slide](https://agent4ppt.ljj040427.chatgpt.site/04-paper/preview/1.jpg)](https://github.com/xy040427-collab/agent4ppt-skill/releases/download/showcase-v1/04-paper.pptx) |
+| **Job introduction**<br>[![Job introduction sample slide](https://agent4ppt.ljj040427.chatgpt.site/05-career/preview/1.jpg)](https://github.com/xy040427-collab/agent4ppt-skill/releases/download/showcase-v1/05-career.pptx) | **Club election**<br>[![Club election sample slide](https://agent4ppt.ljj040427.chatgpt.site/06-election/preview/1.jpg)](https://github.com/xy040427-collab/agent4ppt-skill/releases/download/showcase-v1/06-election.pptx) |
+| **Business review**<br>[![Business review sample slide](https://agent4ppt.ljj040427.chatgpt.site/07-report/preview/1.jpg)](https://github.com/xy040427-collab/agent4ppt-skill/releases/download/showcase-v1/07-report.pptx) | **Product advertising**<br>[![Product advertising sample slide](https://agent4ppt.ljj040427.chatgpt.site/08-ad/preview/1.jpg)](https://github.com/xy040427-collab/agent4ppt-skill/releases/download/showcase-v1/08-ad.pptx) |
+| **Policy briefing**<br>[![Policy briefing sample slide](https://agent4ppt.ljj040427.chatgpt.site/09-policy/preview/1.jpg)](https://github.com/xy040427-collab/agent4ppt-skill/releases/download/showcase-v1/09-policy.pptx) | **Recruitment**<br>[![Recruitment sample slide](https://agent4ppt.ljj040427.chatgpt.site/10-hiring/preview/1.jpg)](https://github.com/xy040427-collab/agent4ppt-skill/releases/download/showcase-v1/10-hiring.pptx) |
+
+[View all 30 slides](docs/showcase.md#all-slides) · [Download PPTX samples on GitHub](https://github.com/xy040427-collab/agent4ppt-skill/releases/tag/showcase-v1)
+
 ## Two production modes
 
 | | Editable composition | Full-slide imagery |

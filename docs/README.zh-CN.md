@@ -52,3 +52,7 @@ Pillow 和测试依赖 python-pptx 为外部依赖，未随仓库打包，各自
 ## 权利与来源标识
 
 本项目目前采用[个人非商业使用许可](../LICENSE)，署名为 Jiajun Li，允许个人非商业使用原版；修改和二次开发工具、再分发、机构部署及商业使用须经本人书面授权并留存证明；不是开放源代码许可。源码含非执行的来源注释，无联网追踪。[上游及第三方许可](../THIRD_PARTY_NOTICES.md)单独保留，不受本项目限制覆盖。详见[身份记录](../AUTHORS.md)及[发布与追溯说明](rights-and-provenance.md)。
+
+## GitHub 展示与下载
+
+[查看十种场景、共三十页预览](showcase.md#all-slides)，或在 [GitHub Release](https://github.com/xy040427-collab/agent4ppt-skill/releases/tag/showcase-v1) 下载十份可编辑 PPTX。每份为三页选页展示。图片通过公开展示网站加载，PPTX 作为 Release 附件，不增加 skill 安装目录体积。
