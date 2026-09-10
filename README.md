@@ -43,6 +43,18 @@ The CLI does **not** generate editable slides. Editable composition is a skill-g
 
 Individuals may use the unmodified tool for their own noncommercial purposes under [LICENSE](LICENSE). Tool modification, redistribution, organizational deployment and commercial use require Jiajun Li's prior written authorization. See [licensing and authorization](docs/licensing.md).
 
+### Install for Codex
+
+Run from the project where you want to use the skill (Node.js/npm and Git required):
+
+```sh
+npx skills add xy040427-collab/agent4ppt-skill --skill agent4ppt-skill --agent codex
+```
+
+The public repository was discovered and installed successfully into an isolated project on Windows on 2026-09-10. This verifies installation, not a fresh-host slide-generation run. The validation disabled installation telemetry. Other hosts can use the manual route below; image generation and PPTX authoring are still required.
+
+### Manual setup
+
 1. Obtain `skills/agent4ppt-skill`, keeping its reference files together.
 2. Put the folder in your host's supported skills directory, or explicitly ask your agent to read its `SKILL.md`.
 3. Enable image generation, PPTX authoring and final-slide rendering. See [host requirements](docs/host-requirements.md).

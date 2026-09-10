@@ -56,3 +56,13 @@ Pillow 和测试依赖 python-pptx 为外部依赖，未随仓库打包，各自
 ## GitHub 展示与下载
 
 [查看十种场景、共三十页预览](showcase.md#all-slides)，或在 [GitHub Release](https://github.com/xy040427-collab/agent4ppt-skill/releases/tag/showcase-v1) 下载十份可编辑 PPTX。每份为三页选页展示。图片通过公开展示网站加载，PPTX 作为 Release 附件，不增加 skill 安装目录体积。
+
+## 一条命令安装到 Codex
+
+在目标项目目录运行（需要 Node.js/npm 和 Git）：
+
+```sh
+npx skills add xy040427-collab/agent4ppt-skill --skill agent4ppt-skill --agent codex
+```
+
+2026-09-10 已在 Windows 独立目录验证公开仓库发现和安装成功；这不等同于新环境完整生图验证。宿主仍需提供生图、PPTX 制作和渲染能力。
