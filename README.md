@@ -2,7 +2,7 @@
 
 **Visually rich AI presentations, with the important parts editable.**
 
-[![skills.sh installs](https://skills.sh/b/xy040427-collab/agent4ppt-skill)](https://skills.sh/xy040427-collab/agent4ppt-skill/agent4ppt-skill) [![Awesome Skills](https://img.shields.io/badge/Awesome%20Skills-indexed-7c3aed)](https://www.awesomeskills.dev/en/skill/xy040427-collab-agent4ppt-skill)
+[![Awesome Skills](https://img.shields.io/badge/Awesome%20Skills-indexed-7c3aed)](https://www.awesomeskills.dev/en/skill/xy040427-collab-agent4ppt-skill)
 
 An agent skill for creating PowerPoint slides from notes, papers and outlines. Generate coherent, text-free artwork, then add editable text, numbers, formulas, charts and tables with your agent's presentation tools.
 
