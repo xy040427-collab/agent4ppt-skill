@@ -1,6 +1,6 @@
 ---
 name: agent4ppt-skill
-description: Create visually coherent, image-led PowerPoint presentations from notes, papers, reports or outlines. Supports full-slide imagery and an experimental workflow combining generated artwork with editable text and diagrams.
+description: Create visually coherent, image-led PowerPoint presentations from notes, papers, reports or outlines. Supports full-slide imagery and an experimental workflow combining generated artwork with editable text, numbers, formulas, charts and diagrams; requires host image-generation, PPTX-authoring and rendering tools.
 ---
 
 # Agent4PPT
