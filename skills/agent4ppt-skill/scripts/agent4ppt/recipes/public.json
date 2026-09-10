@@ -1,0 +1,102 @@
+{
+  "id": "public",
+  "name": "公共事务",
+  "use": "公共服务项目、政策说明、正式会议、年度总结及工作部署。",
+  "guidance": "用克制的红色身份、清楚的中文层级和真实公共事务材料组织正式汇报。庄重来自信息与秩序，不来自到处堆金色、地标或庆典图案。",
+  "palette": {
+    "base": "#FFF8F0 / #F1EAE1",
+    "primary": "#B5293C",
+    "secondary": "#8F2633",
+    "accent": "哑光金 #BE984C",
+    "text": "#292929",
+    "rule": "红色承担标题和重点结构，金色仅少量辅助；不用闪光、浮雕和婚庆式配色。"
+  },
+  "typography": {
+    "title": "端正有力度的中文无衬线，封面、章节、正文保留各自层级。",
+    "body": "准确简洁，条款、机构名、日期和数字不能改写失真。",
+    "labels": "少量红底白字或深红标签区分任务，不强制加导航条。"
+  },
+  "imagery": {
+    "photos": "使用可信场景和工作照片；适度红色处理不能掩盖主体。",
+    "screenshots": "政策和报告页面保留关键出处、条款和日期。",
+    "charts": "主系列红色，少量金色强调，比较用中性灰；保留统计定义。",
+    "illustrations": "公共服务流程可用简单图示；建筑、山水和丝带均为可选且须相关。",
+    "identity": "徽章、旗帜、印章及机构标识只用准确且适用的输入素材，不生成近似替代。"
+  },
+  "elements": {
+    "allow": [
+      "真实工作图片",
+      "正式信息模块",
+      "简图",
+      "少量文化元素",
+      "克制红金细节"
+    ],
+    "avoid": [
+      "每页同一地标",
+      "假公章",
+      "闪金字",
+      "庆典或婚礼图案",
+      "卡通装饰",
+      "无关库存图片"
+    ]
+  },
+  "constraints": [
+    "不要把风格等同于固定居中标题、金线和导航条。",
+    "正式名称与引用保持准确。",
+    "避免把方案示意写成已发布政策或已完成成果。",
+    "准确呈现用户确认的文字，不生成额外水印、无关标识或未经要求的页码。",
+    "真实图表的数值、图例、坐标与身份素材不能为迁就风格而改变；生成结果需要目视复核。"
+  ],
+  "review": [
+    "装饰是否抢过事实。",
+    "标识是否来自有效素材而非生成。",
+    "不同角色页面是否仍有合理变化。"
+  ],
+  "canvas": {
+    "ratio": "16:9 by default; adapt regions for 4:3",
+    "background": "温白、浅暖灰或受控红色背景；真实场景、建筑和抽象色面均为按内容选择的方案，不是固定底图。",
+    "density": "中等，正文要包含可理解的事实、责任与工作安排；正式不等于密集条款墙。",
+    "spacing": "Keep related information together and maintain readable margins; reduce or split content rather than shrink all text."
+  },
+  "layouts": [
+    "正式开场",
+    "政策解释",
+    "工作部署",
+    "成果证据",
+    "重点收束"
+  ],
+  "blueprints": [
+    {
+      "name": "正式开场",
+      "when": "介绍议题和背景",
+      "arrangement": "突出标题配相关场景或抽象视觉，居中或偏侧均可；不必每页有地标。"
+    },
+    {
+      "name": "政策解释",
+      "when": "讲清适用范围与要求",
+      "arrangement": "条款或核心规定在主区，旁边解释条件、流程与实例，引用与解释分开。"
+    },
+    {
+      "name": "工作部署",
+      "when": "落实任务",
+      "arrangement": "目标、步骤、责任和时间按实际信息组织，模块数量服从任务。"
+    },
+    {
+      "name": "成果证据",
+      "when": "汇报实际完成",
+      "arrangement": "真实图片与数据相互支撑，区分累计、当期和计划。"
+    },
+    {
+      "name": "重点收束",
+      "when": "归纳后续行动",
+      "arrangement": "一条清楚结论配必要支撑，不添加无关口号或仪式性装饰。"
+    }
+  ],
+  "consistency": "同一套保持配色、字体层级、线条和图像语言；按内容角色更换构图，不把候选布局变成每页重复的母版。",
+  "page_types": {
+    "cover": "Establish subject and identity using this recipe; preserve the full title.",
+    "section": "Signal a narrative transition without repeating the cover mechanically.",
+    "content": "Select the blueprint whose reading order matches the evidence and argument.",
+    "closing": "Resolve the story with a concrete conclusion, action or learning outcome."
+  }
+}

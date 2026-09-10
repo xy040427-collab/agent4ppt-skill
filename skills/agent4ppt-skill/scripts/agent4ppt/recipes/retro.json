@@ -1,0 +1,93 @@
+{
+  "id": "retro",
+  "name": "复古插画",
+  "use": "文化创意、旅游介绍、品牌故事、生活方式和有叙事场景的产品分享。",
+  "guidance": "用平涂、统一轮廓、有限复古配色和轻纸感建立插画系统。场景承载故事，文字与标注维持现代演示的可读性。",
+  "palette": {
+    "base": "#F2EFDF",
+    "primary": "#364D56",
+    "secondary": "珊瑚 #D66A5A、薄荷 #9BC8B6、芥末 #D7AD40、砖橙 #B96F49",
+    "accent": "从辅助色中选一个作焦点",
+    "rule": "统一深色细轮廓与哑光平涂，不混入霓虹、金属或强光泽。"
+  },
+  "typography": {
+    "title": "略厚的复古展示字或衬线，中文结构不能为了装饰变形。",
+    "body": "友好清晰的几何无衬线，保持短段。",
+    "labels": "细轮廓徽章或标签，用于具体地点、步骤或对象。"
+  },
+  "imagery": {
+    "photos": "若需要真实外观，可保留照片在干净区域，不擅自改成插画失去身份。",
+    "screenshots": "通常作为独立证据框，避免涂画覆盖关键细节。",
+    "charts": "简化外观但保留数值和轴；不能把统计图改成任意装饰曲线。",
+    "illustrations": "建筑、植物、云和物件用稳定轮廓与平涂；细节密度保持一致。"
+  },
+  "elements": {
+    "allow": [
+      "平涂场景",
+      "轮廓徽章",
+      "点状纹理",
+      "简化建筑",
+      "少量几何装饰"
+    ],
+    "avoid": [
+      "写实光影",
+      "复杂投影",
+      "霓虹色",
+      "过细繁复线条",
+      "难读花体"
+    ]
+  },
+  "constraints": [
+    "同一对象跨页保持基本形态与配色。",
+    "轮廓线粗细相对画幅一致。",
+    "不要把文化符号或地标画错后当真实图像。",
+    "准确呈现用户确认的文字，不生成额外水印、无关标识或未经要求的页码。",
+    "真实图表的数值、图例、坐标与身份素材不能为迁就风格而改变；生成结果需要目视复核。"
+  ],
+  "review": [
+    "场景是否服务故事。",
+    "字体是否因复古处理而难辨。",
+    "真实产品与示意插画是否有明确区分。"
+  ],
+  "canvas": {
+    "ratio": "16:9 by default; adapt regions for 4:3",
+    "background": "浅奶油纸底，颗粒细而弱，不让旧纸感降低文字对比。",
+    "density": "中等；场景可以丰富，但每页仍有明确主对象和讲述顺序。",
+    "spacing": "Keep related information together and maintain readable margins; reduce or split content rather than shrink all text."
+  },
+  "layouts": [
+    "场景横卷",
+    "海报式对象",
+    "连续故事",
+    "图标与短文"
+  ],
+  "blueprints": [
+    {
+      "name": "场景横卷",
+      "when": "介绍地点或故事环境",
+      "arrangement": "上方或侧方一幅连续场景，正文按叙事顺序排列；场景不要占满到文字无处安放。"
+    },
+    {
+      "name": "海报式对象",
+      "when": "介绍一个产品或概念",
+      "arrangement": "主对象居中或偏侧，周围少量有用途标注，结论靠近视觉焦点。"
+    },
+    {
+      "name": "连续故事",
+      "when": "解释变化和旅程",
+      "arrangement": "多个简化场景按时间排列，统一轮廓和人物尺度。"
+    },
+    {
+      "name": "图标与短文",
+      "when": "分类说明",
+      "arrangement": "按真实分类选卡片数量，图标轮廓一致；不默认固定三张。"
+    }
+  ],
+  "consistency": "同一套保持配色、字体层级、线条和图像语言；按内容角色更换构图，不把候选布局变成每页重复的母版。",
+  "page_types": {
+    "cover": "Establish subject and identity using this recipe; preserve the full title.",
+    "section": "Signal a narrative transition without repeating the cover mechanically.",
+    "content": "Select the blueprint whose reading order matches the evidence and argument.",
+    "closing": "Resolve the story with a concrete conclusion, action or learning outcome."
+  }
+}

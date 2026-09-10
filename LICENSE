@@ -1,0 +1,85 @@
+Agent4PPT Personal Noncommercial Use License 1.0
+Effective date: 2026-09-10
+
+Copyright (c) 2026 Jiajun Li, for his own protectable contributions.
+Public identity: https://github.com/xy040427-collab
+GitHub account ID: 276311165
+Project provenance ID: a4p-50d41ed6-f9f9-4470-ac9c-e700dd134a07
+
+1. Covered material and reserved rights
+This license applies only to copyrightable contributions to Agent4PPT
+owned by Jiajun Li (the Licensor), including owned code, instructions and
+documentation (the Material). All rights not expressly granted are reserved.
+This is a source-available, restricted license, not an open-source license.
+
+2. Personal noncommercial permission
+An individual may download, install, make necessary private working and
+backup copies of, and run the unmodified Material solely for that individual's
+own noncommercial purposes. The individual may use an agent to perform these
+permitted activities on their behalf; the agent receives no broader rights.
+Ordinary configuration, supplying prompts and inputs, and creating or editing
+one's own presentations are permitted and are not modifications of the tool.
+Examples include personal study, unpaid academic coursework or research,
+personal creative projects, and one's own resume or job application.
+
+3. Activities requiring separate written authorization
+Without prior written authorization under section 5, you may not:
+(a) modify, adapt, translate, extend, or create derivative versions of the
+Material, including its tool code, skill instructions and style resources;
+(b) copy or incorporate protected portions into another skill, framework,
+product or service, or develop or distribute a repackaged version;
+(c) redistribute, publish, mirror, sublicense, sell, or provide the Material
+or derivatives to others, including through a package registry or skill bundle;
+(d) use the Material commercially, for clients, for paid presentation work,
+in a monetized service, or for an employer's or organization's operations;
+(e) offer it as a hosted tool, API, MCP service, or shared agent service for
+other users, even if the service does not charge a fee.
+Organizational deployment requires separate authorization. An individual's
+unpaid academic study is not organizational deployment merely because that
+individual is affiliated with an educational institution.
+
+4. Attribution and misrepresentation
+Retain applicable copyright, license and provenance notices in all permitted
+copies. Do not pass off protected Material as your own work or falsely claim
+authorship, endorsement or authorization. Publishing a link to the official
+project is permitted. This clause does not claim ownership of ideas, general
+methods, independently created work, or material owned by third parties.
+
+5. Written authorization and evidence
+Exceptions require a written authorization issued by Jiajun Li before the
+otherwise restricted activity begins. It must identify the licensee, covered
+project/version or material, permitted activities (including any commercial
+use, modification or redistribution), duration, and any conditions.
+An authorization certificate must carry a unique authorization ID, issue date,
+and the Licensor's signature, including a verifiable electronic signature.
+The Licensor must confirm its issuance through the public GitHub account
+identified above or a contact channel verified through that account.
+The licensee must retain the signed document and the issuance confirmation.
+A request, payment, star, unanswered message, verbal claim, unsigned template
+or unverified screenshot is not an authorization. No automatic approval applies.
+Private proof need not be posted publicly and should not be committed to Git.
+The official copy of this license is sufficient evidence for use permitted by
+section 2; individual certificates are needed only for exceptions.
+
+6. Inputs and outputs
+This license makes no ownership claim over user inputs or generated
+presentations. You may edit and share your own permitted noncommercial outputs,
+subject to rights in their contents and the terms of the host tools. Output
+sharing does not authorize distributing the tool or protected source material.
+Commercial use of the tool remains subject to section 3.
+
+7. Third-party rights and mandatory exceptions
+This license does not replace or restrict applicable third-party licenses,
+earlier grants, rights that cannot lawfully be restricted, or GitHub's Terms
+of Service (including viewing and in-service forking of public repositories).
+Applicable upstream MIT permissions remain in effect for their covered
+material. See THIRD_PARTY_NOTICES.md. No claim is made that provenance has
+been conclusively audited or that all current material is exclusively owned.
+
+8. Termination and disclaimer
+Permission under this license terminates upon breach; cease activities no
+longer authorized. This does not terminate independent third-party rights or
+mandatory statutory rights. Reinstatement requires the Licensor's written
+confirmation. To the extent permitted by applicable law, the Material is
+provided AS IS, without warranty, and the Licensor is not liable for damages
+arising from its use. Mandatory legal rights remain unaffected.

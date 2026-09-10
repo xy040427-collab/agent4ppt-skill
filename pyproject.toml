@@ -1,0 +1,31 @@
+[project]
+name = "agent4ppt-skill"
+version = "0.2.0"
+description = "An agent skill and portable CLI for image-led presentations"
+requires-python = ">=3.10"
+dependencies = ["Pillow>=10.0,<13"]
+authors = [{name = "Jiajun Li"}]
+license = {file = "LICENSE"}
+
+[project.urls]
+Maintainer = "https://github.com/xy040427-collab"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project.scripts]
+agent4ppt = "agent4ppt.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["skills/agent4ppt-skill/scripts"]
+include = ["agent4ppt*"]
+
+[tool.setuptools]
+license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md"]
+
+[tool.setuptools.package-data]
+agent4ppt = ["recipes/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

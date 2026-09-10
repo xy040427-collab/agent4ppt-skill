@@ -1,0 +1,101 @@
+{
+  "id": "professional",
+  "name": "清爽专业",
+  "use": "工作复盘、技术分享、项目进展、应用型答辩；适合需要同时展示完成情况、证据和行动的场合。",
+  "guidance": "使用明亮背景和克制的蓝绿结构，围绕问题、过程、证据与下一步安排页面。信息应足够支持判断，不能为了极简把证据删掉。",
+  "palette": {
+    "base": "#FFFFFF / #F5F7FA",
+    "primary": "#245B9E",
+    "secondary": "#167B77",
+    "accent": "#C98A2E",
+    "text": "#253443",
+    "rule": "蓝色表达结构，蓝绿用于流程和主要比较，琥珀只标注意事项；整套同一种含义固定一种颜色。"
+  },
+  "typography": {
+    "title": "清晰、略粗的中文无衬线，优先短结论；同类正文页固定层级。",
+    "body": "左对齐的无衬线，短句配证据；不要细灰字。",
+    "labels": "图表、时间轴和代码标签可比正文小一级，但仍需放映可读。"
+  },
+  "imagery": {
+    "photos": "用工作或产品的真实照片说明场景，不用无关办公人物充数。",
+    "screenshots": "保留关键界面，可标注步骤，不把无关边栏缩成噪声。",
+    "charts": "保留坐标和基线，优先直接标注重点系列。",
+    "illustrations": "只画机制需要的对象和连接，图标风格保持一致。"
+  },
+  "elements": {
+    "allow": [
+      "细线分隔",
+      "流程箭头",
+      "里程碑",
+      "证据框",
+      "简洁指标",
+      "有意义的代码区"
+    ],
+    "avoid": [
+      "装饰海报布局",
+      "随机图库照片",
+      "密集小字表格",
+      "可爱贴纸",
+      "夸张营销标语"
+    ]
+  },
+  "constraints": [
+    "每页的主图应回答标题中的问题。",
+    "不能把所有页改成相同的目标、结果、计划三栏。",
+    "涉及比较时标明时间、样本和指标口径。",
+    "准确呈现用户确认的文字，不生成额外水印、无关标识或未经要求的页码。",
+    "真实图表的数值、图例、坐标与身份素材不能为迁就风格而改变；生成结果需要目视复核。"
+  ],
+  "review": [
+    "检查本页是否有真实证据而非仅列清单。",
+    "风险与结果是否视觉分开，图中的条件是否仍可读。",
+    "相邻页是否根据内容切换构图。"
+  ],
+  "canvas": {
+    "ratio": "16:9 by default; adapt regions for 4:3",
+    "background": "白色或极浅冷灰，正文区域可以用轻微色差分组；不采用大面积黑底、金色奢华材质或炫光。",
+    "density": "中等；标题、主图和结论有明确级差，技术细节保留在可读的图中或备注。",
+    "spacing": "Keep related information together and maintain readable margins; reduce or split content rather than shrink all text."
+  },
+  "layouts": [
+    "进展复盘",
+    "机制走读",
+    "里程碑",
+    "证据与贡献",
+    "前后对照"
+  ],
+  "blueprints": [
+    {
+      "name": "进展复盘",
+      "when": "需要同时说明结果和未完成事项",
+      "arrangement": "顶部结论；左侧目标与已完成工作；右侧真实结果或截图；下方风险及下一步。不要把未完成任务写入成果区。"
+    },
+    {
+      "name": "机制走读",
+      "when": "解释技术如何工作",
+      "arrangement": "主区域放一条输入到输出的机制图，旁边按观看顺序解释关键节点；底部写适用条件和限制。"
+    },
+    {
+      "name": "里程碑",
+      "when": "说明过程与时间依赖",
+      "arrangement": "时间线放中部，关键里程碑上下错落；已完成与计划使用不同编码；日期来自实际计划。"
+    },
+    {
+      "name": "证据与贡献",
+      "when": "答辩或项目成果",
+      "arrangement": "标题提出研究问题；左侧方法，中间结果，右侧解释贡献；保留局限和后续工作。"
+    },
+    {
+      "name": "前后对照",
+      "when": "展示改进是否有效",
+      "arrangement": "两侧保持相同口径和图像尺度；只强调真正变化的部分；解释变化对使用者的影响。"
+    }
+  ],
+  "consistency": "同一套保持配色、字体层级、线条和图像语言；按内容角色更换构图，不把候选布局变成每页重复的母版。",
+  "page_types": {
+    "cover": "Establish subject and identity using this recipe; preserve the full title.",
+    "section": "Signal a narrative transition without repeating the cover mechanically.",
+    "content": "Select the blueprint whose reading order matches the evidence and argument.",
+    "closing": "Resolve the story with a concrete conclusion, action or learning outcome."
+  }
+}

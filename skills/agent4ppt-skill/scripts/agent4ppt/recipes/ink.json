@@ -1,0 +1,106 @@
+{
+  "id": "ink",
+  "name": "墨水阅读",
+  "use": "观点演讲、文化评论、研究解读、长文分享和需要舞台阅读节奏的叙事。",
+  "guidance": "建立纸面与墨色的编辑系统：衬线标题、无衬线正文和克制元信息相互配合。高强度开篇与安静论述交替，墨水纹理只承担气氛。",
+  "palette": {
+    "base": "#F4F1E7 / #151719",
+    "primary": "#20243D 或 #214333",
+    "secondary": "#D2BFA1",
+    "accent": "少量朱红、蓝色或沙金，按主题只选一种",
+    "rule": "同套固定纸与墨的关系；不要任意生成彩色渐变。"
+  },
+  "typography": {
+    "title": "有编辑气质的中文衬线或高对比展示字，留足笔画空间。",
+    "body": "清楚的无衬线短段，行距宽于标签，保持可读。",
+    "labels": "章节、日期、出处可以用等宽气质的小标签；小是相对层级，不是无法阅读。"
+  },
+  "imagery": {
+    "photos": "编辑式摄影裁切，保留主题主体；需要转黑白时先考虑证据颜色意义。",
+    "screenshots": "作为文献或案例材料，不把 UI 样式带入整个风格。",
+    "charts": "重点少而明确，避免把论述页变成监控大屏；颜色有数据意义时不强行单色。",
+    "illustrations": "抽象墨板只用于背景，解释机制时仍需准确结构。"
+  },
+  "elements": {
+    "allow": [
+      "细线",
+      "章标",
+      "引文",
+      "大数字",
+      "纸纹",
+      "小型元信息"
+    ],
+    "avoid": [
+      "卡片铺满",
+      "闪亮商务渐变",
+      "可爱插图",
+      "密集仪表盘",
+      "无关照片拼贴"
+    ]
+  },
+  "constraints": [
+    "大字主视觉页与普通内容页必须有明显密度变化。",
+    "元信息不自动填写年份、作者或来源。",
+    "墨流、纹理不得穿过重要文字降低辨识。",
+    "准确呈现用户确认的文字，不生成额外水印、无关标识或未经要求的页码。",
+    "真实图表的数值、图例、坐标与身份素材不能为迁就风格而改变；生成结果需要目视复核。"
+  ],
+  "review": [
+    "是否每页都像封面而缺乏论述。",
+    "引文是否与解释区分，来源是否能读。",
+    "大数字是否保留单位与统计范围。"
+  ],
+  "canvas": {
+    "ratio": "16:9 by default; adapt regions for 4:3",
+    "background": "从暖白纸面、深墨、靛蓝、林绿或沙色中选定主题组合；可以有浅纹理，不能把纹理做成动态内容或正文背景干扰。",
+    "density": "低到中；大字页、引文页与证据页交替，不能每页只放一个标题。",
+    "spacing": "Keep related information together and maintain readable margins; reduce or split content rather than shrink all text."
+  },
+  "layouts": [
+    "主张开篇",
+    "安静论述",
+    "数字专题",
+    "引文页",
+    "双栏比较",
+    "章节过渡"
+  ],
+  "blueprints": [
+    {
+      "name": "主张开篇",
+      "when": "开启主题或章节",
+      "arrangement": "一条大标题与轻微墨流形成主视觉，边缘只保留必要信息。"
+    },
+    {
+      "name": "安静论述",
+      "when": "展开观点",
+      "arrangement": "左侧短论证与证据，右侧相关摄影或示意图；出处靠近材料。"
+    },
+    {
+      "name": "数字专题",
+      "when": "强调一个真实发现",
+      "arrangement": "一个大数字配单位、时间范围和口径；旁侧最多几条支持事实。"
+    },
+    {
+      "name": "引文页",
+      "when": "呈现原话与解释",
+      "arrangement": "引用作为主要文字，明确作者与出处；解释与引文分开，不能伪造引用。"
+    },
+    {
+      "name": "双栏比较",
+      "when": "展示两种观点或前后变化",
+      "arrangement": "两栏共用字体系统，区分观点归属，避免用配色暗示未经论证的优劣。"
+    },
+    {
+      "name": "章节过渡",
+      "when": "改变讲述强度",
+      "arrangement": "简短章节句配留白，维持原主题，不新增无关图像语言。"
+    }
+  ],
+  "consistency": "同一套保持配色、字体层级、线条和图像语言；按内容角色更换构图，不把候选布局变成每页重复的母版。",
+  "page_types": {
+    "cover": "Establish subject and identity using this recipe; preserve the full title.",
+    "section": "Signal a narrative transition without repeating the cover mechanically.",
+    "content": "Select the blueprint whose reading order matches the evidence and argument.",
+    "closing": "Resolve the story with a concrete conclusion, action or learning outcome."
+  }
+}

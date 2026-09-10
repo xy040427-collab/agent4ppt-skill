@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+config.json
+*.sqlite3*
+*.pptx
+*.png
+*.jpg
+*.webp
+*.zip
+dist/
+build/
+*.egg-info/
+test-output/

@@ -1,0 +1,94 @@
+{
+  "id": "handmade",
+  "name": "温暖手作",
+  "use": "教育活动、社区故事、生活方式、人本服务和温和的经验分享。",
+  "guidance": "以纸片、轻拼贴和哑光柔和色表达人的体验。保留触感但维持演示秩序，温暖不能成为装饰堆积或幼稚化的理由。",
+  "palette": {
+    "base": "#F3EDE2 / #E8DFCE",
+    "primary": "#654A39",
+    "secondary": "灰粉 #DEC0B8、鼠尾草 #BFD1B1、浅蓝 #B4CFDC",
+    "accent": "柔和橙或浅紫，少量使用",
+    "rule": "颜色哑光、低饱和；正文使用足够深的棕灰，不能为了柔和变成淡字。"
+  },
+  "typography": {
+    "title": "圆润展示字或整洁手写，字形要端正。",
+    "body": "友好无衬线或可读手写，行距舒适。",
+    "labels": "纸标签、缝线感小签或手写图注，但不同时使用所有装饰。"
+  },
+  "imagery": {
+    "photos": "保持自然肤色和真实场景，可配纸边框但不扭曲人物。",
+    "screenshots": "保留清晰界面，避免把细节放进过度倾斜的小纸片。",
+    "charts": "数据保持精确，纸面处理仅限外框，不改变条形长度。",
+    "illustrations": "植物、手作物件与简图应有情境联系，贴纸数量克制。"
+  },
+  "elements": {
+    "allow": [
+      "浅纸纹",
+      "撕边",
+      "少量胶带和纸夹",
+      "水彩小色块",
+      "柔和投影"
+    ],
+    "avoid": [
+      "塑料光泽",
+      "强烈霓虹",
+      "满页贴纸",
+      "过重阴影",
+      "低对比正文",
+      "毫无主题的植物堆积"
+    ]
+  },
+  "constraints": [
+    "纸片倾斜不能让重要文字难读。",
+    "照片和材料的身份不能因拼贴而改变。",
+    "触感效果不能遮挡证据。",
+    "准确呈现用户确认的文字，不生成额外水印、无关标识或未经要求的页码。",
+    "真实图表的数值、图例、坐标与身份素材不能为迁就风格而改变；生成结果需要目视复核。"
+  ],
+  "review": [
+    "纸影是否过重。",
+    "主题是否被装饰淹没。",
+    "文本是否在实际放映大小仍有足够对比。"
+  ],
+  "canvas": {
+    "ratio": "16:9 by default; adapt regions for 4:3",
+    "background": "奶油纸或浅木色，可有细纤维；投影与边缘只够说明纸片层次。",
+    "density": "低到中，区域间有呼吸空间；正文不能在纹理中失去对比。",
+    "spacing": "Keep related information together and maintain readable margins; reduce or split content rather than shrink all text."
+  },
+  "layouts": [
+    "纸片笔记",
+    "剪贴故事",
+    "手作关系图",
+    "柔和收束"
+  ],
+  "blueprints": [
+    {
+      "name": "纸片笔记",
+      "when": "并列几项经验",
+      "arrangement": "根据内容数量摆放纸片，边缘略有变化但文字基线稳定，主次通过面积表达。"
+    },
+    {
+      "name": "剪贴故事",
+      "when": "讲述具体经历",
+      "arrangement": "一侧真实照片或故事插画，另一侧依次写情境、变化和体会。"
+    },
+    {
+      "name": "手作关系图",
+      "when": "解释人和服务关系",
+      "arrangement": "中心简图配贴签，胶带不遮挡箭头和字。"
+    },
+    {
+      "name": "柔和收束",
+      "when": "总结行动",
+      "arrangement": "少量建议与一个主题相关物件，空白用于呼吸而不是缺内容。"
+    }
+  ],
+  "consistency": "同一套保持配色、字体层级、线条和图像语言；按内容角色更换构图，不把候选布局变成每页重复的母版。",
+  "page_types": {
+    "cover": "Establish subject and identity using this recipe; preserve the full title.",
+    "section": "Signal a narrative transition without repeating the cover mechanically.",
+    "content": "Select the blueprint whose reading order matches the evidence and argument.",
+    "closing": "Resolve the story with a concrete conclusion, action or learning outcome."
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "id": "editorial",
+  "name": "创意杂志",
+  "use": "设计作品集、文化活动、品牌故事、艺术展览、创意提案及需要视觉记忆点的分享。",
+  "guidance": "通过字与图的尺度差、不对称留白和有目的的裁切建立编辑设计感。完整信息仍有清晰阅读顺序，夸张构图不能牺牲中文辨识。",
+  "palette": {
+    "base": "#F7F5F0 / #151515",
+    "primary": "#151515",
+    "secondary": "#777777",
+    "accent": "从 #E83674、#E8D531、#20BFC6 中选一个作为全套强调色",
+    "rule": "以一个主强调色贯穿；辅助低饱和色仅在摄影素材需要时出现。"
+  },
+  "typography": {
+    "title": "大尺度展示字，可选中文衬线或有个性的无衬线；长标题拆出短主词但保留完整含义。",
+    "body": "干净无衬线，按编辑网格排成短段，避免杂志印刷级微小字。",
+    "labels": "边注、分类词和图注用于解释材料；竖排和旋转文字只做少量辅助。"
+  },
+  "imagery": {
+    "photos": "允许大胆裁切和跨栏，但不能剪掉主体关键特征。",
+    "screenshots": "作为作品证据保留比例；不要把所有截图加同一种设备壳。",
+    "charts": "使用图表实际数据，以简化线条融入编辑语言。",
+    "illustrations": "拼贴、几何、半色调和抽象板块应服务本页主题。"
+  },
+  "elements": {
+    "allow": [
+      "细分隔线",
+      "局部半色调",
+      "拼贴边缘",
+      "大字号",
+      "小型标签",
+      "有意义的几何切面"
+    ],
+    "avoid": [
+      "每页严格对称",
+      "默认企业图标",
+      "多种抢眼强调色",
+      "低对比小字",
+      "任意叠加贴纸"
+    ]
+  },
+  "constraints": [
+    "保留标题、作品名称及必要出处的准确拼写。",
+    "允许尺度反差，但正文不能成为不可读装饰。",
+    "图片与文字必须有内容联系，不仅颜色相配。",
+    "准确呈现用户确认的文字，不生成额外水印、无关标识或未经要求的页码。",
+    "真实图表的数值、图例、坐标与身份素材不能为迁就风格而改变；生成结果需要目视复核。"
+  ],
+  "review": [
+    "盖住装饰后，是否仍能理解本页观点。",
+    "裁切是否改变作品含义或隐藏必要信息。",
+    "全套是否在重点页与说明页之间形成节奏。"
+  ],
+  "canvas": {
+    "ratio": "16:9 by default; adapt regions for 4:3",
+    "background": "以黑、白或炭灰建立整套基底；局部色块承担视觉焦点，不随机逐页更换背景。",
+    "density": "重点页低密度，论述页中密度；允许信息块与大留白形成张力。",
+    "spacing": "Keep related information together and maintain readable margins; reduce or split content rather than shrink all text."
+  },
+  "layouts": [
+    "标题与主视觉",
+    "封面故事",
+    "编辑证据网格",
+    "对角分区",
+    "作品细节"
+  ],
+  "blueprints": [
+    {
+      "name": "标题与主视觉",
+      "when": "开场或作品概念",
+      "arrangement": "主标题与一幅强图形成不对称平衡，标题可约占三分之一画幅；角落放简短背景。"
+    },
+    {
+      "name": "封面故事",
+      "when": "介绍一项完整创意",
+      "arrangement": "一幅主图和一句核心标题，边缘少量内容引导；不要把所有页面做成杂志封面。"
+    },
+    {
+      "name": "编辑证据网格",
+      "when": "解释设计选择",
+      "arrangement": "大图与小注释沿统一网格对齐，次要材料分组；选择一处打破网格形成焦点。"
+    },
+    {
+      "name": "对角分区",
+      "when": "表达冲突或转变",
+      "arrangement": "斜向色面可以分开前后状态，但正文沿稳定基线排布，避免字被切断。"
+    },
+    {
+      "name": "作品细节",
+      "when": "展示局部设计价值",
+      "arrangement": "一个大裁切配两个确有差异的细节；标注说明裁切位置与观察重点。"
+    }
+  ],
+  "consistency": "同一套保持配色、字体层级、线条和图像语言；按内容角色更换构图，不把候选布局变成每页重复的母版。",
+  "page_types": {
+    "cover": "Establish subject and identity using this recipe; preserve the full title.",
+    "section": "Signal a narrative transition without repeating the cover mechanically.",
+    "content": "Select the blueprint whose reading order matches the evidence and argument.",
+    "closing": "Resolve the story with a concrete conclusion, action or learning outcome."
+  }
+}

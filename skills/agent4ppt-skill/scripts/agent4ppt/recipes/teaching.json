@@ -1,0 +1,124 @@
+{
+  "id": "teaching",
+  "name": "教学演示",
+  "use": "课程、学术教学、案例讲解、训练营和工作坊；适用于理工、人文、艺术等不同学科。",
+  "guidance": "从学习目标出发，用符合学科的材料解释概念。图文共同承担教学，不强迫每页技术流程或三栏卡片；结尾也应回应学到的内容。",
+  "palette": {
+    "base": "#FFFFFF / #F3F6F9",
+    "primary": "#173F70",
+    "secondary": "#2E73A5 / #E9F1F8",
+    "accent": "按学科和语义选择少量辅助色",
+    "text": "#253342",
+    "rule": "颜色区分类别和步骤而非装饰；全套同一概念同色，真实材料保留原色。"
+  },
+  "typography": {
+    "title": "清楚、较粗的中文无衬线，标题可为问题或核心概念。",
+    "body": "短解释、必要定义和清楚缩进；拉丁字母、公式、单位准确。",
+    "labels": "标签跟随图像和材料，不能为了像模板给每块加一条色带。"
+  },
+  "imagery": {
+    "photos": "案例、实物、历史场景等都可成为证据；多图需说明各自观察点。",
+    "screenshots": "真实操作保留关键文字和界面状态，标注观看顺序。",
+    "charts": "强调正在教授的变化或比较，轴、单位和数字保持准确。",
+    "illustrations": "依据学科选择地图、解释图、作品局部、档案、原文、公式或关系图；不默认画科幻场景。",
+    "discipline": "公式、艺术品、历史文献、文学片段、医学与科学图像都是有效教学视觉，注意身份、语境和来源。"
+  },
+  "elements": {
+    "allow": [
+      "学科相关材料",
+      "注释",
+      "地图",
+      "公式",
+      "时间线",
+      "比较",
+      "有用途的表格和网格"
+    ],
+    "avoid": [
+      "只有文字的空页",
+      "无关装饰插画",
+      "反复三栏",
+      "通用发光科技图",
+      "随机 3D 图标",
+      "假学校标识"
+    ]
+  },
+  "constraints": [
+    "有意义的视觉与文字共同解释问题，视觉不等于装饰照片。",
+    "密度过高时拆页或组织结构，不缩成小字。",
+    "标题系统保持层级一致，但不强制所有页同一横条。",
+    "风格参考的旧题材、机构与术语不能继承到新课程。",
+    "准确呈现用户确认的文字，不生成额外水印、无关标识或未经要求的页码。",
+    "真实图表的数值、图例、坐标与身份素材不能为迁就风格而改变；生成结果需要目视复核。"
+  ],
+  "review": [
+    "学生是否知道先看哪里。",
+    "例子是否真正解释定义而非只好看。",
+    "公式与专有名词是否准确。",
+    "结束页是否回应学习目标。"
+  ],
+  "canvas": {
+    "ratio": "16:9 by default; adapt regions for 4:3",
+    "background": "白或极浅冷灰，浅蓝用于辅助结构，背景不干扰公式、图像或原文。",
+    "density": "适中且有内容；既不空到只有标题，也不把教材整段搬上屏幕。",
+    "spacing": "Keep related information together and maintain readable margins; reduce or split content rather than shrink all text."
+  },
+  "layouts": [
+    "课程开篇",
+    "概念解释",
+    "过程与因果",
+    "比较辨析",
+    "案例与证据",
+    "知识综述",
+    "练习与反馈",
+    "收束与致谢"
+  ],
+  "blueprints": [
+    {
+      "name": "课程开篇",
+      "when": "建立学习目标",
+      "arrangement": "课题、必要课程信息和相关视觉材料，共同说明今天学什么。"
+    },
+    {
+      "name": "概念解释",
+      "when": "建立定义与例子",
+      "arrangement": "选择示意图、公式、原文或照片解释概念，旁边写必要条件和例子。"
+    },
+    {
+      "name": "过程与因果",
+      "when": "讲清变化顺序",
+      "arrangement": "按时间、因果或操作顺序排列材料，箭头含义明确；不把并列关系画成因果。"
+    },
+    {
+      "name": "比较辨析",
+      "when": "区分易混概念",
+      "arrangement": "对齐比较维度，使用对应例子或材料，最后指出判断规则。"
+    },
+    {
+      "name": "案例与证据",
+      "when": "应用知识",
+      "arrangement": "先给背景，再看材料，最后解释如何得出判断；适用于实验、作品、文本和历史事件。"
+    },
+    {
+      "name": "知识综述",
+      "when": "整理关系",
+      "arrangement": "按主题、结构或发展线索组织知识，保留关键联系。"
+    },
+    {
+      "name": "练习与反馈",
+      "when": "检查理解",
+      "arrangement": "给可操作任务和观察点，答案或提示按实际授课方式放备注或后页。"
+    },
+    {
+      "name": "收束与致谢",
+      "when": "结束课程",
+      "arrangement": "短总结配相关材料或知识关系回顾，不只留下孤立的谢谢。"
+    }
+  ],
+  "consistency": "同一套保持配色、字体层级、线条和图像语言；按内容角色更换构图，不把候选布局变成每页重复的母版。",
+  "page_types": {
+    "cover": "Establish subject and identity using this recipe; preserve the full title.",
+    "section": "Signal a narrative transition without repeating the cover mechanically.",
+    "content": "Select the blueprint whose reading order matches the evidence and argument.",
+    "closing": "Resolve the story with a concrete conclusion, action or learning outcome."
+  }
+}

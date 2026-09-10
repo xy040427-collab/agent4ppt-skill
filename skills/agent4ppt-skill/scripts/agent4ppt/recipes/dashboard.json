@@ -1,0 +1,101 @@
+{
+  "id": "dashboard",
+  "name": "数据分析",
+  "use": "经营复盘、指标监测、实验比较、SaaS 产品数据说明；需要结构化呈现多组指标。",
+  "guidance": "采用明亮分析界面语言，把指标、趋势、构成和异常组织成可比较的证据。卡片用于确有独立指标的场景，不把所有信息都伪装为仪表盘。",
+  "palette": {
+    "base": "#FFFFFF / #F4F7FB",
+    "primary": "#2866C7",
+    "secondary": "#139FB8 / #8271B5",
+    "accent": "绿色 #258B69、橙色 #C98525、红色 #CD4C4C 用于有定义的状态",
+    "text": "#203047 / #5B6A7B",
+    "rule": "同指标跨页同色；状态颜色需要说明语义，不把所有下降都判为坏事。"
+  },
+  "typography": {
+    "title": "明确的分析标题，最好包含判断及范围。",
+    "body": "简洁无衬线，说明口径和异常原因。",
+    "labels": "数字使用等宽数字感，单位紧邻；图例与刻度不能省略成不可读装饰。"
+  },
+  "imagery": {
+    "photos": "只在场景解释或产品说明需要时添加，指标页通常不需要照片。",
+    "screenshots": "真实仪表盘截图保留口径，可放大相关区域，不伪造交互状态。",
+    "charts": "必须使用提供数据；示意数据需显著标注，不能仅求曲线看起来合理。",
+    "illustrations": "流程图可解释指标形成路径，装饰图标不替代变量定义。"
+  },
+  "elements": {
+    "allow": [
+      "浅色指标区",
+      "折线与条形",
+      "微趋势",
+      "状态点",
+      "轻边框",
+      "必要的圆环和进度条"
+    ],
+    "avoid": [
+      "黑色监控墙",
+      "随机填数",
+      "无标注趋势箭头",
+      "极小表格",
+      "高饱和霓虹"
+    ]
+  },
+  "constraints": [
+    "每个 KPI 都能回答数值是什么、单位是什么、覆盖什么时间。",
+    "对比值必须使用同口径，变化百分比与百分点分开。",
+    "比例图应有清晰分母和类别；不要自动补全缺失数据。",
+    "准确呈现用户确认的文字，不生成额外水印、无关标识或未经要求的页码。",
+    "真实图表的数值、图例、坐标与身份素材不能为迁就风格而改变；生成结果需要目视复核。"
+  ],
+  "review": [
+    "无数据的卡片是否被模型编造填满。",
+    "图例和颜色是否跨页一致。",
+    "主图是否能在放映距离读懂。"
+  ],
+  "canvas": {
+    "ratio": "16:9 by default; adapt regions for 4:3",
+    "background": "白底或极浅蓝灰，卡片通过间距和浅边界区分；不使用暗色控制室、重霓虹或发光图表。",
+    "density": "中高，但主结论优先于全部指标；表格不足以清晰显示时拆页。",
+    "spacing": "Keep related information together and maintain readable margins; reduce or split content rather than shrink all text."
+  },
+  "layouts": [
+    "指标总览",
+    "单一洞察",
+    "趋势与过程",
+    "构成与排序",
+    "异常追踪"
+  ],
+  "blueprints": [
+    {
+      "name": "指标总览",
+      "when": "已有多组可比较指标",
+      "arrangement": "顶部显示少量 KPI 和时间范围；主体放最重要趋势；下方可有记录列表。数量由数据决定。"
+    },
+    {
+      "name": "单一洞察",
+      "when": "解释一个显著变化",
+      "arrangement": "中心放主图或核心判断，周围展示支持指标、风险和解释。"
+    },
+    {
+      "name": "趋势与过程",
+      "when": "关联操作和结果",
+      "arrangement": "一侧列实际发生的流程或事件，另一侧给趋势，标注时间关系但不自动宣称因果。"
+    },
+    {
+      "name": "构成与排序",
+      "when": "比较类别贡献",
+      "arrangement": "使用条形、构成图和简表中最合适的一种；若使用圆环，保留总量和类别定义。"
+    },
+    {
+      "name": "异常追踪",
+      "when": "排查指标变化",
+      "arrangement": "主图标注异常点，下方列对应样本或事件；缺失值与零值分开。"
+    }
+  ],
+  "consistency": "同一套保持配色、字体层级、线条和图像语言；按内容角色更换构图，不把候选布局变成每页重复的母版。",
+  "page_types": {
+    "cover": "Establish subject and identity using this recipe; preserve the full title.",
+    "section": "Signal a narrative transition without repeating the cover mechanically.",
+    "content": "Select the blueprint whose reading order matches the evidence and argument.",
+    "closing": "Resolve the story with a concrete conclusion, action or learning outcome."
+  }
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agent4PPT"
+  short_description: "Generate coherent image-led decks with resumable jobs"
+  default_prompt: "Use $agent4ppt-skill to create a visual presentation and verify the exported PPTX."

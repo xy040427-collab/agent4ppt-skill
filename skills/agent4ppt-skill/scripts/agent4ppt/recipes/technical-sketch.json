@@ -1,0 +1,107 @@
+{
+  "id": "technical-sketch",
+  "name": "技术手绘",
+  "use": "AI 与软件机制解释、课程概念、技术文章和需要降低理解门槛的知识分享。",
+  "guidance": "在近白纸面上用精确小图、细石墨线和少量淡色标记解释一个概念。与热闹白板不同，这里强调安静、稀疏和精确。",
+  "palette": {
+    "base": "#FBFBF7",
+    "primary": "#363C40",
+    "secondary": "淡蓝 #C2D9EB、鼠尾草 #D1DFCF、浅桃 #EACBBF、浅紫 #D8CFE5",
+    "accent": "从淡色中选择一种用于关键部位",
+    "rule": "线是主要结构，色块只作少量标记，不用强烈整面配色。"
+  },
+  "typography": {
+    "title": "适度放大的手写气质标题，不能像宣传海报占据半页。",
+    "body": "短标签与少量定义，字形准确。",
+    "labels": "括号、下划线和小标签贴近对应部位，不能离开图单独堆放。"
+  },
+  "imagery": {
+    "photos": "作为独立证据，不强行描线变成装饰。",
+    "screenshots": "只展示必要区域，保留真实文案。",
+    "charts": "数据图保持原样，手绘标注放外围，不重画数值。",
+    "illustrations": "细线、轻铅笔排线、小型软件对象；可有一次小人物帮助尺度理解。"
+  },
+  "elements": {
+    "allow": [
+      "细箭头",
+      "括号注释",
+      "淡色荧光标记",
+      "轻排线",
+      "精确小结构"
+    ],
+    "avoid": [
+      "大人物",
+      "黄纸",
+      "全页边框",
+      "白板擦痕和笔托",
+      "贴纸",
+      "复杂 UI 卡片",
+      "海报式大标题"
+    ]
+  },
+  "constraints": [
+    "标签少而准确，不能把一整段技术文本改成密集手写。",
+    "保留输入输出与对象边界。",
+    "概念简化不得改变机制本身。",
+    "准确呈现用户确认的文字，不生成额外水印、无关标识或未经要求的页码。",
+    "真实图表的数值、图例、坐标与身份素材不能为迁就风格而改变；生成结果需要目视复核。"
+  ],
+  "review": [
+    "中心图是否小而清楚而非空洞。",
+    "每个标签是否对应正确对象。",
+    "是否不必要地加入白板元素。"
+  ],
+  "canvas": {
+    "ratio": "16:9 by default; adapt regions for 4:3",
+    "background": "接近白色的纸面，不用黄旧纸、全页边框或白板笔托。",
+    "density": "低到中，每页一个核心概念；长解释移到备注，但必要定义不能省略。",
+    "spacing": "Keep related information together and maintain readable margins; reduce or split content rather than shrink all text."
+  },
+  "layouts": [
+    "中央机制",
+    "前后变化",
+    "三步推演",
+    "认知模型",
+    "稀疏矩阵",
+    "结尾规则"
+  ],
+  "blueprints": [
+    {
+      "name": "中央机制",
+      "when": "解释一个结构",
+      "arrangement": "小而精确的主图放中心，周边三到四个必要标签，留白引导观察。"
+    },
+    {
+      "name": "前后变化",
+      "when": "解释一个改动",
+      "arrangement": "两幅同尺度小图对照，用一条有意义的箭头连接，底部说明收益与代价。"
+    },
+    {
+      "name": "三步推演",
+      "when": "展示输入输出",
+      "arrangement": "按实际步骤安排简图，箭头不多于逻辑需要；步骤多时拆分。"
+    },
+    {
+      "name": "认知模型",
+      "when": "帮助理解抽象机制",
+      "arrangement": "一个贴切隐喻配定义、误区和使用规则；明确隐喻不等于实际物理结构。"
+    },
+    {
+      "name": "稀疏矩阵",
+      "when": "辅助选择",
+      "arrangement": "维度定义清楚，每格只放最必要的判断，避免密集小字。"
+    },
+    {
+      "name": "结尾规则",
+      "when": "归纳可执行建议",
+      "arrangement": "一个小对象配几条规则；可有极小人物，但不让人物成为主角。"
+    }
+  ],
+  "consistency": "同一套保持配色、字体层级、线条和图像语言；按内容角色更换构图，不把候选布局变成每页重复的母版。",
+  "page_types": {
+    "cover": "Establish subject and identity using this recipe; preserve the full title.",
+    "section": "Signal a narrative transition without repeating the cover mechanically.",
+    "content": "Select the blueprint whose reading order matches the evidence and argument.",
+    "closing": "Resolve the story with a concrete conclusion, action or learning outcome."
+  }
+}

@@ -1,0 +1,17 @@
+name: Reproduction or output problem
+description: Report a sanitized, reproducible problem
+body:
+  - type: textarea
+    id: environment
+    attributes:
+      label: Host and production mode
+      description: Agent, operating system, slide app, editable or full-image mode
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps, expected result and actual result
+      description: Use fictional inputs. Do not include credentials or private documents.
+    validations:
+      required: true

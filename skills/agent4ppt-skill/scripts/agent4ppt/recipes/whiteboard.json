@@ -1,0 +1,94 @@
+{
+  "id": "whiteboard",
+  "name": "白板讨论",
+  "use": "头脑风暴、工作坊、课堂讨论、协作梳理和需要呈现思考过程的说明。",
+  "guidance": "模拟整洁白板上的可追踪思路，以马克笔线条、圈注和分组说明关系。它允许讨论现场感，但不允许混乱箭头和无法辨认的手写文字。",
+  "palette": {
+    "base": "#FAFAF6",
+    "primary": "#262626",
+    "secondary": "蓝 #397FB2、红 #C9564C、橙 #D9983E",
+    "accent": "少量绿、紫或浅黄便签",
+    "rule": "颜色像真实马克笔墨水；给步骤、反例或待定项定义颜色，不使用数字霓虹效果。"
+  },
+  "typography": {
+    "title": "整洁的大手写标题，有一定力度。",
+    "body": "短且容易识别的中文手写标签，避免整段连写。",
+    "labels": "圈、框、下划线表达强调；一条信息不要同时被多种强调包围。"
+  },
+  "imagery": {
+    "photos": "只有讨论主题需要时使用，避免写实人物站在板前抢占画面。",
+    "screenshots": "可贴为证据材料，旁边圈注，不画假 UI。",
+    "charts": "图表是证据，曲线数值不能因手绘风改变。",
+    "illustrations": "框、云、箭头和小涂鸦要解释机制，不能把页面做成儿童涂鸦墙。"
+  },
+  "elements": {
+    "allow": [
+      "手绘框",
+      "圈注",
+      "箭头",
+      "少量便签",
+      "简图",
+      "可选白板边缘"
+    ],
+    "avoid": [
+      "难读手写",
+      "到处交叉的连线",
+      "写实人物",
+      "数字 UI 卡片",
+      "无关涂鸦"
+    ]
+  },
+  "constraints": [
+    "每条箭头都能解释方向与关系。",
+    "不要用花哨板框压缩正文区域。",
+    "保留讨论的不确定性，不能把假设写成已批准结论。",
+    "准确呈现用户确认的文字，不生成额外水印、无关标识或未经要求的页码。",
+    "真实图表的数值、图例、坐标与身份素材不能为迁就风格而改变；生成结果需要目视复核。"
+  ],
+  "review": [
+    "不看备注能否沿主路径读完。",
+    "强调标记是否过多。",
+    "白板风与技术手绘风是否混淆：这里允许讨论现场感。"
+  ],
+  "canvas": {
+    "ratio": "16:9 by default; adapt regions for 4:3",
+    "background": "近白白板，可有轻微擦痕；边框、笔托或笔只能作为可选环境线索，不占据信息区。",
+    "density": "中等；开放布局仍需主要观看路线，旁支注释应与主路径区分。",
+    "spacing": "Keep related information together and maintain readable margins; reduce or split content rather than shrink all text."
+  },
+  "layouts": [
+    "步骤白板",
+    "中心概念",
+    "解释与示意",
+    "讨论收束"
+  ],
+  "blueprints": [
+    {
+      "name": "步骤白板",
+      "when": "解释连续操作",
+      "arrangement": "几个手绘框沿主路径排列，箭头表示动作或数据传递，旁边便签指出注意事项。"
+    },
+    {
+      "name": "中心概念",
+      "when": "梳理概念关系",
+      "arrangement": "中心主题周围按关系分组，连线写清含义；不是所有节点都互相连接。"
+    },
+    {
+      "name": "解释与示意",
+      "when": "先说问题再画机制",
+      "arrangement": "一侧列问题和条件，另一侧画对应机制，底部归纳具体动作。"
+    },
+    {
+      "name": "讨论收束",
+      "when": "记录已确定和待验证事项",
+      "arrangement": "不同区域区分结论、假设和行动，保留负责人与时间仅在真实提供时填写。"
+    }
+  ],
+  "consistency": "同一套保持配色、字体层级、线条和图像语言；按内容角色更换构图，不把候选布局变成每页重复的母版。",
+  "page_types": {
+    "cover": "Establish subject and identity using this recipe; preserve the full title.",
+    "section": "Signal a narrative transition without repeating the cover mechanically.",
+    "content": "Select the blueprint whose reading order matches the evidence and argument.",
+    "closing": "Resolve the story with a concrete conclusion, action or learning outcome."
+  }
+}

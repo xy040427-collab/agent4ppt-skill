@@ -1,0 +1,122 @@
+{
+  "id": "research",
+  "name": "学术汇报",
+  "use": "研究生组会、开题、项目论证、科研答辩和结题；适合需要真实图表、技术路线、风险与可测成果的场景。",
+  "guidance": "以科学问题和证据组织中高密度页面。蓝色帮助分组，有限红色强调结论或风险；不能为了像学术而堆满文字，也不能把证据页改成空旷营销海报。",
+  "palette": {
+    "base": "#FFFFFF / #F3F6FA",
+    "primary": "#164B8D",
+    "secondary": "#2E6FA8 / #E8F0FA",
+    "accent": "#B3353C 用于少量核心结论、突破和风险",
+    "text": "#202020",
+    "rule": "色彩服务结构和论点；源图已有语义颜色时优先保持源图，不强制染成蓝红。"
+  },
+  "typography": {
+    "title": "正式清楚的中文无衬线，正文页通常左对齐；封面与章节可变化。",
+    "body": "短科学陈述，明确条件、对象和观察，不使用空泛成果口号。",
+    "labels": "类别栏和技术路线节点可加深蓝底；表格表头清晰，变量与单位准确。"
+  },
+  "imagery": {
+    "photos": "实验设备、样本或场景照片必须相关、真实；不加无关人物或动物作为装饰。",
+    "screenshots": "代码、日志和论文片段应裁出可解释区域并保留关键条件。",
+    "charts": "保留轴、误差线、图例、样本量和统计口径，生成图不能改数字。",
+    "illustrations": "技术路线、机理示意与流程可以简化，但不能改变箭头语义或把假说当结论。"
+  },
+  "elements": {
+    "allow": [
+      "学术表格",
+      "技术路线",
+      "真实论文图",
+      "实验照片",
+      "结论短句",
+      "风险分类"
+    ],
+    "avoid": [
+      "虚假证书",
+      "虚构学校标识",
+      "营销人物剪影",
+      "纯装饰物",
+      "空旷但无信息的页面",
+      "每页机械三卡片"
+    ]
+  },
+  "constraints": [
+    "标题、证据与结论必须在同一实验口径下成立。",
+    "红色只突出真正重要的推断，不整段涂红。",
+    "内容没有完成验证时使用计划、假设或待测措辞。",
+    "标题区、分隔和结论条都是可选结构，不要求所有页完全一样。",
+    "准确呈现用户确认的文字，不生成额外水印、无关标识或未经要求的页码。",
+    "真实图表的数值、图例、坐标与身份素材不能为迁就风格而改变；生成结果需要目视复核。"
+  ],
+  "review": [
+    "实验设置、基线、单位和误差是否齐全。",
+    "观察与机制解释是否分开。",
+    "可测指标是否有对应的考核方式。",
+    "图表细节是否与输入一致。"
+  ],
+  "canvas": {
+    "ratio": "16:9 by default; adapt regions for 4:3",
+    "background": "白色为主，浅灰或浅蓝帮助组织证据、表格和机制图；封面可以更突出，但保持正式。",
+    "density": "中高到高；保留科学细节、对齐和阅读顺序，无法读清时拆分研究内容。",
+    "spacing": "Keep related information together and maintain readable margins; reduce or split content rather than shrink all text."
+  },
+  "layouts": [
+    "背景与研究现状",
+    "任务分解",
+    "目标与技术路线",
+    "结果与机制",
+    "平台与基础",
+    "风险与应对",
+    "成果与考核",
+    "失败分析"
+  ],
+  "blueprints": [
+    {
+      "name": "背景与研究现状",
+      "when": "说明问题从何而来",
+      "arrangement": "主要区域放文献演进或真实证据拼组，侧栏归纳尚未解决的问题；出处与证据相邻。"
+    },
+    {
+      "name": "任务分解",
+      "when": "把课题分成可验证工作",
+      "arrangement": "目标在前，研究任务按依赖排列，后面连接验证方法；不硬凑三个子课题。"
+    },
+    {
+      "name": "目标与技术路线",
+      "when": "解释如何达到目标",
+      "arrangement": "一句可验证目标，机制、方法与应用验证形成路径；区分已完成和计划。"
+    },
+    {
+      "name": "结果与机制",
+      "when": "汇报实际实验",
+      "arrangement": "证据图占主体，短标题表达发现，旁边解释变量和机制假设，底部保留限制。"
+    },
+    {
+      "name": "平台与基础",
+      "when": "证明实验条件可行",
+      "arrangement": "设备、已有成果或真实报告作证据；不能生成虚假证书、机构标识或成果截图。"
+    },
+    {
+      "name": "风险与应对",
+      "when": "讨论可行性边界",
+      "arrangement": "按实际风险分类展示风险、影响、缓解办法和验证状态；技术、安全、性能、组织可作候选分类。"
+    },
+    {
+      "name": "成果与考核",
+      "when": "定义可验收输出",
+      "arrangement": "类别、指标、测量方法、验收条件构成表格；区分预期成果与已经完成成果。"
+    },
+    {
+      "name": "失败分析",
+      "when": "讨论下一轮实验",
+      "arrangement": "原始失败案例配原因假设和下一步验证，不从单例推出全部原因。"
+    }
+  ],
+  "consistency": "同一套保持配色、字体层级、线条和图像语言；按内容角色更换构图，不把候选布局变成每页重复的母版。",
+  "page_types": {
+    "cover": "Establish subject and identity using this recipe; preserve the full title.",
+    "section": "Signal a narrative transition without repeating the cover mechanically.",
+    "content": "Select the blueprint whose reading order matches the evidence and argument.",
+    "closing": "Resolve the story with a concrete conclusion, action or learning outcome."
+  }
+}
