@@ -10,7 +10,7 @@ Early preview · Host image generation and PPTX tools required · [中文说明]
 
 ## See what it makes
 
-[Explore the public gallery and download the sample decks](https://agent4ppt.ljj040427.chatgpt.site/) · [Browse the Awesome Skills listing](https://www.awesomeskills.dev/en/skill/xy040427-collab-agent4ppt-skill)
+[Explore the public gallery and download the sample decks](https://agent4ppt.ljj040427.chatgpt.site/) · [Browse the Awesome Skills listing](https://www.awesomeskills.dev/en/skill/xy040427-collab-agent4ppt-skill) · [Read the machine-readable summary](https://agent4ppt.ljj040427.chatgpt.site/llms.txt)
 
 **10 scenarios × 3 selected slides**: comics, research meetings, technology launches, paper presentations, job introductions, club elections, business reviews, product ads, policy briefings and recruitment.
 
