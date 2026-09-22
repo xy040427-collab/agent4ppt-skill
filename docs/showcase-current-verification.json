@@ -1,0 +1,22 @@
+{
+  "published": "2026-09-22",
+  "workflow": "full_slide_first",
+  "topic": "电子信息类专业",
+  "preview_policy": "Existing delivered previews copied without retouching. Not a fresh generation run.",
+  "decks": {
+    "full-slide-image": {
+      "filename": "electronics-full-slide-image.pptx",
+      "slides": 10,
+      "notes": 10,
+      "native_text_objects": 0,
+      "sha256": "daf75c78a2fe733219549eaebc1152221b5699ddb34a97ab4522cf78419483ce"
+    },
+    "editable-mode": {
+      "filename": "electronics-editable-mode.pptx",
+      "slides": 10,
+      "notes": 10,
+      "native_text_objects": 90,
+      "sha256": "1abbc3bc81b8f6cbdcd14b96f94bfab18ddb2f1a111350ffeace937efab59397"
+    }
+  }
+}

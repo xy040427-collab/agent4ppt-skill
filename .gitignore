@@ -18,3 +18,7 @@ test-output/
 # Local production materials and generated deliverables may contain private content.
 /work/
 /outputs/
+
+# Explicitly approved public documentation previews only.
+!docs/assets/full-slide-first/*.png
+!docs/assets/full-slide-first/*.jpg

@@ -1,26 +1,42 @@
 # Agent4PPT
 
-Editable text now follows a [target-driven PowerPoint review loop](skills/agent4ppt-skill/references/visual-replication.md): adjust named objects via MCP, verify East Asian fonts, render and compare, then adopt the saved single-page draft with `compose --native-draft`. Export preserves the accepted native text formatting instead of resetting it to initial layout estimates.
+**Visually rich AI presentations, with selected text editable.**
 
-New editable projects now use a **full-slide-first** workflow: generate the complete design, measure selected native objects, erase only those contents with the image tool, then restore native text/pictures and review against the design. The runtime records both artifacts and rejects skipped or mismatched stages. Existing projects remain compatible; `editable_workflow: reserved` explicitly selects the earlier blank-region route. See the [workflow](skills/agent4ppt-skill/references/editable-composition.md) and [commands](skills/agent4ppt-skill/references/commands.md).
+Generate the complete slide → remove selected text with the image model → restore native text through PowerPoint MCP → render, compare and refine. Full-slide imagery and editable mode share the same accepted original designs.
 
-**Visually rich AI presentations, with the important parts editable.**
+[中文说明](docs/README.zh-CN.md) · [Current workflow gallery](docs/showcase-current.md) · [Install and use](#get-started)
 
-[![Awesome Skills](https://img.shields.io/badge/Awesome%20Skills-indexed-7c3aed)](https://www.awesomeskills.dev/en/skill/xy040427-collab-agent4ppt-skill)
+## Current workflow in action
 
-An agent skill for creating PowerPoint slides from notes, papers and outlines. Design each complete slide first, erase selected editable content, then restore native text and replaceable pictures at measured positions. Fixed text and ordinary visual symbols remain in the artwork.
+**Electronic information majors — a complete 10-slide paired presentation.** These are delivered outputs from the current full-slide-first workflow, reused for this showcase rather than newly generated for the README. The right column is a rendered PowerPoint slide with native text, not a second flattened baseline.
 
-Early preview · Host image generation and PPTX tools required · [中文说明](docs/README.zh-CN.md)
+| Full-slide image · original design | Editable mode · PowerPoint render |
+|---|---|
+| ![Original complete slide](docs/assets/full-slide-first/full-slide-image-01.png) | ![Native editable slide](docs/assets/full-slide-first/editable-mode-01.png) |
+| ![Chip design and packaging original](docs/assets/full-slide-first/full-slide-image-05.png) | ![Chip design and packaging editable render](docs/assets/full-slide-first/editable-mode-05.png) |
+| ![Optoelectronics original](docs/assets/full-slide-first/full-slide-image-07.png) | ![Optoelectronics editable render](docs/assets/full-slide-first/editable-mode-07.png) |
 
-## See what it makes
+[Download full-slide PPTX](https://github.com/xy040427-collab/agent4ppt-skill/releases/download/showcase-full-slide-first-v2/electronics-full-slide-image.pptx) · [Download editable PPTX](https://github.com/xy040427-collab/agent4ppt-skill/releases/download/showcase-full-slide-first-v2/electronics-editable-mode.pptx) · [Compare all 10 pages](docs/showcase-current.md)
 
-[Explore the public gallery and download the sample decks](https://agent4ppt.ljj040427.chatgpt.site/) · [Browse the Awesome Skills listing](https://www.awesomeskills.dev/en/skill/xy040427-collab-agent4ppt-skill) · [Read the machine-readable summary](https://agent4ppt.ljj040427.chatgpt.site/llms.txt)
+The two decks each contain 10 slides and 10 speaker-note pages. The editable deck contains **90 native text objects**; the full-slide deck contains none. Native object counts establish editability, not visual equivalence. Fonts, line breaks and small details can differ; graphics and fixed text remain raster artwork. These examples do not establish unattended first-pass quality. [Verification scope](docs/showcase-current.md#verification-and-limits).
 
-**10 scenarios × 3 selected slides**: comics, research meetings, technology launches, paper presentations, job introductions, club elections, business reviews, product ads, policy briefings and recruitment.
+## How editable mode works
 
-The 30 pages were exported and visually checked in PowerPoint 16.0. Representative titles, chart values and table cells were edited and saved in test copies. Layout corrections were made; these examples do not establish unattended first-pass quality. See [showcase evidence](docs/showcase.md).
+1. **Create the target:** generate and accept the entire designed page, including text.
+2. **Remove selected text:** use the image model to produce the background, preserving the artwork and fixed text.
+3. **Restore native objects:** use PowerPoint MCP to set content, position, font, size, color and wrapping against the target.
+4. **Render and review:** inspect the actual PowerPoint output, adjust named objects, then retain the accepted checkpoint for export.
 
-## Preview gallery
+Both modes use the shared SQLite queue, leases and revisions. Structured review and raster comparison records prevent skipped or stale artifacts from passing completion. They do not prove that an agent's visual judgment is correct. See [editable workflow](skills/agent4ppt-skill/references/editable-composition.md) and [visual replication](skills/agent4ppt-skill/references/visual-replication.md).
+
+## Historical gallery
+
+The original **10 scenarios × 3 slides** collection remains available. It documents an earlier production approach and is not evidence for the current full-slide-first path. The external gallery site below still hosts that historical collection.
+
+<details>
+<summary>Browse the earlier 30-page gallery</summary>
+
+### Earlier visual directions
 
 Ten different visual directions. Each download contains three selected slides. Click a preview to download its PPTX.
 
@@ -33,6 +49,10 @@ Ten different visual directions. Each download contains three selected slides. C
 | **Policy briefing**<br>[![Policy briefing sample slide](https://agent4ppt.ljj040427.chatgpt.site/09-policy/preview/1.jpg)](https://github.com/xy040427-collab/agent4ppt-skill/releases/download/showcase-v1/09-policy.pptx) | **Recruitment**<br>[![Recruitment sample slide](https://agent4ppt.ljj040427.chatgpt.site/10-hiring/preview/1.jpg)](https://github.com/xy040427-collab/agent4ppt-skill/releases/download/showcase-v1/10-hiring.pptx) |
 
 [View all 30 slides](docs/showcase.md#all-slides) · [Download PPTX samples on GitHub](https://github.com/xy040427-collab/agent4ppt-skill/releases/tag/showcase-v1)
+
+</details>
+
+[Historical gallery site](https://agent4ppt.ljj040427.chatgpt.site/) · [Historical machine-readable summary](https://agent4ppt.ljj040427.chatgpt.site/llms.txt)
 
 ## Two production modes
 

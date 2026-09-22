@@ -1,6 +1,23 @@
-> 新版英文入口已更新可编辑模式与 30 页样例验证；以下保留 CLI 使用说明。现允许个人非商业使用；工具二次开发、再分发、机构部署和商业使用须另获本人书面授权。
+# Agent4PPT
 
-# agent4ppt-skill
+**先完整成图，再图片模型去字，通过 PowerPoint MCP 还原可编辑文字并渲染对照。**
+
+## 新版流程实测展示
+
+《电子信息类专业》：完整 **10 页双模式**，左侧是 full-slide 原始成图，右侧是带原生文字的 PowerPoint 实际渲染。本次复用已交付的新流程成品更新展示，没有重新生图，也没有修饰预览来隐藏差异。
+
+| Full-slide 原图 | Editable 实际渲染 |
+|---|---|
+| ![整页成图](assets/full-slide-first/full-slide-image-01.png) | ![可编辑页面](assets/full-slide-first/editable-mode-01.png) |
+| ![芯片方向原图](assets/full-slide-first/full-slide-image-05.png) | ![芯片方向可编辑版](assets/full-slide-first/editable-mode-05.png) |
+
+[下载整页图片版](https://github.com/xy040427-collab/agent4ppt-skill/releases/download/showcase-full-slide-first-v2/electronics-full-slide-image.pptx) · [下载可编辑版](https://github.com/xy040427-collab/agent4ppt-skill/releases/download/showcase-full-slide-first-v2/electronics-editable-mode.pptx) · [查看全部 10 页对比](showcase-current.md)
+
+两份文件均为 10 页，附 10 页备注；可编辑版包含 **90 个原生文字对象**。对象数量证明可编辑结构，不代表像素级一致；插画与固定文字仍在底图中，字形、换行与细节可能存在差异。此处不把实测样例表述为无人干预的一次生成保证。
+
+[历史 30 页画廊](showcase.md)与旧展示站继续保留，并与当前流程的实测证据分开标注。
+
+## 工作流程与使用
 
 制作效率：新 brief 的页面并发默认及最大为 **10**。先验收一张复杂正文样页，再尽量用满 `min(10, 项目并发, 可执行页面数, 宿主实际子 agent 容量)` 的页面 worker 池，完成一页立即补位；每位 editable worker 负责完整的成图→图片模型去字→MCP 还原→渲染对照闭环。`dispatch-plan PROJECT --host-slots N` 读取当前队列，给出可派页码及数量，不创建 agent、不改变宿主平台限制。共享 PowerPoint endpoint 的修改、保存、渲染串行执行，其余图片工作并行；每页集中修改后统一渲染，保留初次和最终逐对象检查与所有验收门槛。主 agent 看每页最终对照，复用真实 worker 记录并重点复核异常；视觉合格后不再反复打磨不可感知的字形差异。详见 [页面调度](../skills/agent4ppt-skill/references/production.md)及 [还原与验收](../skills/agent4ppt-skill/references/visual-replication.md#efficient-correction-and-review)。
 

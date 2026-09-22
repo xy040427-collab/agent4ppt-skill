@@ -1,3 +1,5 @@
+> Historical collection / 历史样例：以下保留早期 30 页展示，不代表当前 full-slide-first 流程。新版完整双模式成品请看 [Current showcase](showcase-current.md)。
+
 # Ten directions, thirty pages
 
 Each scenario contains three selected pages, not a full-length presentation.
