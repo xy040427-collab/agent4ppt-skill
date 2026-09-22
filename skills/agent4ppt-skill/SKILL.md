@@ -1,20 +1,42 @@
 ---
 name: agent4ppt-skill
-description: Create visually coherent, image-led PowerPoint presentations from notes, papers, reports or outlines. Supports full-slide imagery and an experimental workflow combining generated artwork with editable text, numbers, formulas, charts and diagrams; requires host image-generation, PPTX-authoring and rendering tools.
+description: Create Agent4PPT full-slide-image and editable-mode PowerPoint decks and paired comparisons. For every editable page, generate a complete slide first, erase selected text with an image model, then restore native text through PowerPoint MCP and visually match the original. Includes the portable runtime, stage records and review tools.
 ---
 
 # Agent4PPT
 
 Deliver a presentation that the user can open, inspect and present. Preserve coherent visual design and meaningful generated artwork when adding editability.
 
+For every new editable page, use `full_slide_first`. Read [editable composition](references/editable-composition.md) and [visual replication](references/visual-replication.md) before generating images or writing a production script. The sequence is complete slide generation → accepted original → image-model removal of selected text → native text restoration through PowerPoint MCP → rendered visual comparison and adjustment. Initial layout estimates are not the visual target.
+
+For a two-mode comparison, retain those same accepted generated originals as the full-slide version. Do not flatten the editable deck and label it a full-slide-image baseline. Do not switch to `reserved`, reuse unrelated images or submit an unrendered background as QA evidence to work around a tool failure. Resume existing legacy projects as needed; creating a new reserved project requires an explicit user request for that workflow. If a required tool fails, diagnose/retry within the task scope or report the blocked stage. The runtime cannot prove that a host's visual judgment is truthful.
+
 ## Choose the production mode
 
-- **Full-slide imagery:** the image model produces each entire page; the bundled CLI maintains jobs and exports rasterized pages with text notes. Use the existing workflow below when this format fits the request.
-- **Editable composition (experimental):** when the user requests editable content, read [editable composition](references/editable-composition.md). Plan artwork and native text together, then compose them with the host's available presentation tools. This route does not require the bundled CLI or a particular library. Pilots cover photographic pages, a schedule with replaceable icons, and a native chart with an embedded workbook. Broader visual parity and desktop application behavior are not established.
+For built-in image outputs, read [the artifact handoff](references/backend-choice.md#内置图片产物交接) before generation. A display data URL does not mean no local file exists. Resolve the output of the specific tool call, use `import-image` to validate/copy it into the task directory, then inspect and register it with the existing stage command. Importing does not complete or approve a page.
 
-The CLI project schema, full-page worker prompt and image-only generation/export rules below and in their operational references apply to full-slide imagery. Do not feed a flattened hybrid page into that exporter and call it editable. Reuse the style guides, source-handling principles and speaking guidance in either mode.
+- **Full-slide imagery:** the image model produces each entire page; the bundled CLI maintains jobs and exports rasterized pages with text notes. Use the existing workflow below when this format fits the request.
+- **Editable composition:** read [editable composition](references/editable-composition.md). New projects default to `editable_workflow: full_slide_first`: generate a finished slide WITH text and pictures, measure selected native overlays from that design, register it with `record-design`, use its returned erase request to remove ONLY selected content, register the edited background with `record-background`, then compose and review native overlays. Keep the complete artwork and fixed text. Explicit `editable_workflow: reserved` retains the earlier blank-region route. Native charts, tables and connected diagrams still require the documented host extension; the bundled exporter supports text and pictures.
+
+Both modes share planning, style guides, source handling, page leases, revisions, notes and delivery checks. The prompt and exported objects depend on the project mode. Editable does not mean every visible mark must become an object: explicitly allowed fixed text and visual symbols can stay in the image. Do not split a complete scene into many assets merely to make selected text editable. Never flatten a composed page and call the flattened result editable.
+
+New full-slide-first projects enforce `review_policy: structured-v1`. Initial overlay coordinates are provisional; do not constrain the complete design with blank-region guides. Measure positions and typography from the accepted design and preflight native text before `record-design --overlays-file`. Compare the design, erased background and composed render. Check erasure residue, artwork preservation and design alignment in addition to ordinary composition QA. Diagnostic reservation guides remain available for the explicit `reserved` route. With authorized delegation, assign the complete page loop to page workers; the runtime queue does not launch host agents itself.
 
 ## Start from the intended result
+
+New text-only full-slide-first projects also enable `visual_comparison: raster-v1`. After each PowerPoint checkpoint render, run `compare-render` as described in [visual replication](references/visual-replication.md#measured-render-comparison). Inspect the overview on every pass and every object panel initially and finally; intermediate passes focus on modified objects and remaining findings. Use the named native object and actual run formatting in its report to correct position, visible size, color and emphasis through MCP. Recompose, rerender and compare again after corrections. Completion recomputes these measurements and rejects stale reports or unaddressed findings. A diagnostic with no flags is not visual approval; it does not recognize words or identify the target font. Do not manufacture exceptions to approve visible mismatches.
+
+New full-slide-first projects containing only native text overlays enforce `native_acceptance: target-v1`: completion requires an adopted `compose --native-draft` checkpoint, a PowerPoint preview exported at the target image dimensions, and observations for every text object. Initial drafts cannot pass this gate. Existing databases and mixed image/text extensions keep their previous compatibility rules. These checks establish artifact completeness, not proof of MCP use or visual quality.
+
+Before batch production, finish one representative content page with multiple separately positioned text blocks, including emphasis and body copy. A cover alone does not validate restoration. Inspect target and render yourself at equal dimensions; fix visible differences before accepting the sample or expanding production. Never prefill pass reports for pages you have not inspected. Use `font_size` in points, not `size`.
+
+After the sample is accepted, use page subagents where the host supports them. New briefs default to `parallelism: 10`, with a maximum of 10. Keep the worker pool as full as useful: target `min(10, project parallelism, ready pages, actual available child-agent capacity)`, accounting for workers already running rather than spawning a duplicate pool. Refill each freed slot immediately instead of waiting for an entire batch. The limit is a ceiling, not a reason to create ten workers for fewer ready pages. Use `dispatch-plan PROJECT --host-slots N` to inspect the runtime's read-only dispatch recommendation; pass actual currently available child slots. This command neither creates agents nor increases the host's own limit. If the host offers fewer slots, use those and report the actual concurrency honestly. See [production](references/production.md).
+
+Assign each editable worker the complete page loop and its own files and session. The coordinator owns the outline, accepted sample, shared notes, final deck and acceptance. Do not consume page-worker slots with redundant QA-only agents. When PowerPoint uses a shared endpoint/process, serialize **all** its mutations, saves and renders through one coordinator-owned queue; separate session IDs alone do not guarantee safe concurrency. Image generation, erasure and independent visual inspection can continue in parallel. Never close shared PowerPoint sessions or quit the shared process while another page is active.
+
+For each correction pass, inspect the page first, prepare all required object changes, then execute ordinary MCP calls together in one orchestration, checking each result; save, adopt and render once after the pass. This is host-side batching, not a new native MCP batch endpoint. Preserve every-object initial and final comparison review and all runtime gates. The coordinator inspects every final page overview and the detailed regions needed to resolve findings, small-text concerns and exceptions, reusing the worker's genuine per-object evidence instead of repeating every successful intermediate pass. Stop polishing imperceptible glyph/antialias differences after visual acceptance; unresolved visible defects or required comparison findings still block completion.
+
+For full-slide-first editable production, read [visual replication](references/visual-replication.md) before composition. Use the accepted design as the visual target, adjust existing native text through PowerPoint MCP, verify East Asian fonts, and register adjusted checkpoints with `compose --native-draft`. Render and compare before completion. This is the normal production loop, not optional post-delivery repair; final export retains adopted text formatting.
 
 Read the supplied material and determine audience, purpose, language and approximate length. Verify changing factual claims against authoritative sources. Extract required figures and screenshots before planning layouts. Keep original assets and their sources with the project.
 
@@ -60,6 +82,8 @@ Run `styles` to discover built-in and personal recipes. A known `style_name` in 
 | 教学演示 | [Teaching](references/styles/teaching.md) |
 
 ## Run a full-slide image project
+
+The following is the unchanged `mode: full_slide` route (also the default for older briefs). For `mode: editable`, follow the shared queue with the additional `compose → render/review → complete` steps in [editable composition](references/editable-composition.md).
 
 The portable entry point is `python <skill>/scripts/agent4ppt.py`. Run it with Python 3.10+ and Pillow. `doctor` reports the current runtime; `setup` creates a separate runtime if needed. See [commands.md](references/commands.md) for commands and [brief.md](references/brief.md) for the brief schema.
 

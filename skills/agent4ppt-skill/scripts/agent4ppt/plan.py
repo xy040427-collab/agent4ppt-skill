@@ -3,8 +3,17 @@ from pathlib import Path
 import json
 import re
 from .files import digest
+from .composition import MODES, validate_overlays
 
 BACKENDS = {'builtin', 'openai', 'atlascloud'}
+
+
+def execution_contract(brief):
+    return {'max_page_workers': 10, 'project_parallelism': min(10, brief['parallelism']),
+            'dispatch': 'After sample acceptance maximize available page workers; refill with dispatch-plan --host-slots FREE_CHILD_SLOTS.',
+            'guide': str(Path(__file__).resolve().parents[2] / 'references/production.md'),
+            'native_batch': 'mcp-batch validates one page correction plan; host executes MCP calls sequentially in one orchestration pass, then saves/adopts/renders.',
+            'shared_powerpoint': 'Serialize calls on a shared endpoint; never close a session while other workers use that process.'}
 
 
 def describe(value):
@@ -50,10 +59,24 @@ def validate(brief, base):
     pages = brief.get('pages')
     if not isinstance(pages, list) or not 1 <= len(pages) <= 500:
         raise ValueError('pages must contain 1 to 500 entries')
-    limit = brief.get('parallelism', 3)
-    if type(limit) is not int or not 1 <= limit <= 32:
-        raise ValueError('parallelism must be 1..32')
+    limit = brief.get('parallelism', 10)
+    if type(limit) is not int or not 1 <= limit <= 10:
+        raise ValueError('parallelism must be 1..10')
     prepared = dict(brief, ratio=ratio, backend=backend, parallelism=limit)
+    mode = brief.get('mode', 'full_slide')
+    if mode not in MODES:
+        raise ValueError('mode must be full_slide or editable')
+    prepared['mode'] = mode
+    if mode == 'editable':
+        prepared.setdefault('editable_workflow', 'full_slide_first')
+        if prepared['editable_workflow'] not in ('full_slide_first', 'reserved'):
+            raise ValueError('Unknown editable_workflow')
+        if prepared['editable_workflow'] == 'full_slide_first':
+            prepared['review_policy'] = 'structured-v1'
+    if brief.get('review_policy') not in (None, 'structured-v1'):
+        raise ValueError('Unknown review_policy')
+    if brief.get('review_policy') and mode != 'editable':
+        raise ValueError('structured-v1 review requires editable mode')
     if brief.get('style_name'):
         from .styles import catalog
         values = catalog()
@@ -67,6 +90,19 @@ def validate(brief, base):
         if not isinstance(item, dict) or not str(item.get('title', '')).strip():
             raise ValueError(f'Page {index} needs a title')
         page = dict(item, number=index)
+        if mode == 'editable':
+            page['overlays'] = validate_overlays(item.get('overlays'), base)
+            from .layout import reserved_regions
+            reserved_regions(page, ratio)
+            raster_text = item.get('raster_text', [])
+            if not isinstance(raster_text, list) or any(not isinstance(x, str) for x in raster_text):
+                raise ValueError('raster_text must be a list of exact strings allowed in the image')
+            page['raster_text'] = raster_text
+            # Keep one unambiguous visible-copy source in this mode.
+            if item.get('bullets') or item.get('text'):
+                raise ValueError('Editable copy belongs in overlays or raster_text, not bullets/text')
+        elif item.get('overlays'):
+            raise ValueError('Set mode=editable to export overlays')
         for field in ('bullets', 'constraints'):
             if not isinstance(page.get(field, []), list) or any(not isinstance(x, str) for x in page.get(field, [])):
                 raise ValueError(f'{field} must be a list of strings')
@@ -110,7 +146,55 @@ def compile_request(brief, page, style_reference=None, generation_method=None):
             sections.append('Asset fidelity: ' + describe(ref['fidelity']))
     sections.append('Preserve evidence figures and product identity. Do not invent or relabel their data. '
                     'Reference-guided generation does not guarantee pixel-exact preservation; report any discrepancy.')
+    mode = brief.get('mode', 'full_slide')
+    if mode == 'editable' and brief.get('editable_workflow') == 'full_slide_first':
+        sections = [s for s in sections if not s.startswith(('Page title:', 'Exact copy:', 'Exact structured text:'))]
+        sections.append('FULL-SLIDE DESIGN STAGE: Render a finished slide WITH all selected text below and fixed raster text. '
+                        'Design text and artwork together. Do not leave text blanks or reserve empty overlay boxes. '
+                        'Overlay coordinates are provisional and must be measured again from the finished design by the host. '
+                        'The page title is metadata; only render the exact visible copy below, once each.')
+        sections.append('Exact visible copy:\n' + describe([o['text'] for o in page['overlays'] if o['type'] == 'text'] + page.get('raster_text', [])))
+        for overlay in page['overlays']:
+            if overlay['type'] == 'image':
+                references.append(dict(path=overlay['path'], sha256=overlay['sha256'], role=f'Include this replaceable picture in the complete design: {overlay["id"]}'))
+                sections.append(f'Render supplied picture {overlay["id"]}: {overlay["path"]}')
+    elif mode == 'editable':
+        # Replace the full-image text contract, including the title and copy blocks.
+        sections = [s for s in sections[3:] if not s.startswith(('Page title:', 'Exact copy:', 'Exact structured text:'))]
+        sections.insert(0,
+            f'Create ONE complete {brief["ratio"]} presentation-page artwork, retaining the entire composition. '
+            'Render the illustrations, decorative icons, separators, arrows, circles, lighting and other raster-owned details together. '
+            'Do not reduce the result to a generic background or separate asset tiles. '
+            'EDITABLE BOUNDARY OVERRIDES STYLE EXAMPLES: the reserved overlays below will be added as native PPT objects later. '
+            'Do not draw their text, numbers, placeholder words, or image contents into the artwork. '
+            'Keep their normalized x/y/w/h regions naturally readable without opaque cover-up panels. '
+            'For numbered circles, keep the circle in the artwork and leave its center free for the native number. '
+            'Other visual symbols and explicitly allowed raster text may remain in the artwork. '
+            'Page title is context only unless explicitly listed as raster text. '
+            'Do not typeset instructions, metadata, coordinates, IDs, or style recipe descriptions.')
+        regions = [{k: v for k, v in item.items() if k not in ('path', 'sha256')}
+                   for item in page['overlays']]
+        sections.extend([f'Page subject (context only): {page["title"]}',
+                         'Reserved native overlays (layout context, NEVER render these contents):\n' + describe(regions),
+                         'Exact raster text allowed in the artwork:\n' + describe(page.get('raster_text', []))])
+        from .layout import reserved_regions
+        sections.append('Native overlay safety regions (including margins):\n' + describe(reserved_regions(page, brief['ratio'])) +
+                        '\nQuiet regions may retain a smooth background but must exclude foreground objects, arrows, separator lines, and decorative edges. '
+                        'Container regions may retain a simple circle or panel fill; keep its text interior clear. '
+                        'Layout guide colored rectangles are diagnostic only: NEVER copy their fills, borders or markings into final artwork.')
     return {'page': page['number'], 'backend': brief['backend'], 'prompt': '\n\n'.join(sections),
+            'execution': execution_contract(brief),
+            'mode': mode, 'editable_workflow': brief.get('editable_workflow', 'reserved'),
+            'stage': 'design' if mode == 'editable' and brief.get('editable_workflow') == 'full_slide_first' else 'background',
+            'overlays': page.get('overlays', []),
+            'review_policy': brief.get('review_policy'),
+            'native_acceptance': brief.get('native_acceptance'),
+            'visual_comparison': brief.get('visual_comparison'),
+            'native_review': ({'guide': str(Path(__file__).resolve().parents[2] / 'references/visual-replication.md'),
+                               'target': 'accepted complete design',
+                               'loop': 'edit named objects in PowerPoint; verify Latin and East Asian fonts; save; compose --native-draft; render checkpoint; visually compare; repeat until accepted',
+                               'acceptance': 'preserve every selected text and line break; coordinator inspects content, typography, alignment and artwork; hashes alone do not prove visual quality'}
+                              if mode == 'editable' else None),
             'references': references, 'options': dict(brief.get('image_options', {}), **page.get('image_options', {})),
             'title': page['title'], 'generation_method': selected_method,
             'requires_images': bool(references)}

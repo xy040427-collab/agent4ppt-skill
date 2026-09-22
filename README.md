@@ -1,10 +1,14 @@
 # Agent4PPT
 
+Editable text now follows a [target-driven PowerPoint review loop](skills/agent4ppt-skill/references/visual-replication.md): adjust named objects via MCP, verify East Asian fonts, render and compare, then adopt the saved single-page draft with `compose --native-draft`. Export preserves the accepted native text formatting instead of resetting it to initial layout estimates.
+
+New editable projects now use a **full-slide-first** workflow: generate the complete design, measure selected native objects, erase only those contents with the image tool, then restore native text/pictures and review against the design. The runtime records both artifacts and rejects skipped or mismatched stages. Existing projects remain compatible; `editable_workflow: reserved` explicitly selects the earlier blank-region route. See the [workflow](skills/agent4ppt-skill/references/editable-composition.md) and [commands](skills/agent4ppt-skill/references/commands.md).
+
 **Visually rich AI presentations, with the important parts editable.**
 
 [![Awesome Skills](https://img.shields.io/badge/Awesome%20Skills-indexed-7c3aed)](https://www.awesomeskills.dev/en/skill/xy040427-collab-agent4ppt-skill)
 
-An agent skill for creating PowerPoint slides from notes, papers and outlines. Generate coherent, text-free artwork, then add editable text, numbers, formulas, charts and tables with your agent's presentation tools.
+An agent skill for creating PowerPoint slides from notes, papers and outlines. Design each complete slide first, erase selected editable content, then restore native text and replaceable pictures at measured positions. Fixed text and ordinary visual symbols remain in the artwork.
 
 Early preview · Host image generation and PPTX tools required · [中文说明](docs/README.zh-CN.md)
 
@@ -34,12 +38,12 @@ Ten different visual directions. Each download contains three selected slides. C
 
 | | Editable composition | Full-slide imagery |
 |---|---|---|
-| Visuals | Text-free generated artwork | Complete generated slide |
-| Editable content | Native text, charts and tables composed by the host | Speaker notes; visible slide is an image |
-| Export | Host PPTX authoring tools | Optional bundled Python CLI |
+| Visuals | Complete design, selective erasure, native content restored | Complete generated slide |
+| Editable content | Bundled native text and replaceable pictures; advanced charts/tables through a host extension | Speaker notes; visible slide is an image |
+| Export | Shared CLI queue, compose/review, and layered export | Bundled CLI image export |
 | Best fit | Research, reports, reusable presentations | Image-led pages needing no separate text edits |
 
-The CLI does **not** generate editable slides. Editable composition is a skill-guided workflow, not a standalone model or hosted service.
+Set `mode: editable` in a brief to use the same SQLite queue, leases and revisions, with `compose` and rendered-page review before completion. The CLI exports native text and independent pictures over the original whole-page artwork. Advanced native charts/tables still use host tools and are not integrated into this CLI review path. This is a skill and portable runtime, not a standalone model or hosted service. See [editable workflow](skills/agent4ppt-skill/references/editable-composition.md).
 
 ## Get started
 
@@ -66,11 +70,11 @@ The public repository was discovered and installed successfully into an isolated
 
 Try this prompt:
 
-> Use agent4ppt-skill to create a 3-slide research update from these notes. Generate coherent text-free backgrounds, then add native editable titles, conclusions and chart data. Vary the layout by slide purpose. Reopen and render the final PPTX, inspect every slide, and deliver the PPTX with previews. Label any illustrative data clearly.
+> Use agent4ppt-skill to create a 3-slide research update from these notes. Generate complete slides first, then erase selected titles, conclusions and labels and restore them as native overlays measured from the design. Keep ordinary icons, arrows and decorative structure in the artwork. Register both stages, compose and compare each page against the design, then reopen and render the final PPTX. Deliver the PPTX with previews and label illustrative data clearly.
 
 ## What is included
 
-Twelve visual-system guides; source-handling and speaker-note guidance; editable composition instructions; an optional portable CLI for full-image jobs, retries and export. No particular PPTX library is required for the editable workflow.
+Twelve visual-system guides; source-handling and speaker-note guidance; editable composition instructions; a portable CLI for page leases, revisions, image jobs, native overlays, review records and export. The bundled writer has no slide-authoring library dependency; rendering requires the host.
 
 ## Limits
 

@@ -1,5 +1,9 @@
 # 从材料到交付的工作流
 
+新 editable 项目以 full_slide_first 为默认：完整成稿、测量原生对象、局部去除、原位拓印。design/erase/compose 子阶段与页面租约共用；record-design 和 record-background 保存版本绑定材料。样张提供完整成稿的视觉参照，最终验收仍看原生合成页。显式 reserved 及旧项目保留原来预留区域路线。
+
+两种模式共用以下阶段。editable 仍每页一张完整底图，先明确 raster_text 和原生 overlays 的内容归属。样张及验收对象是叠加完成的页面，正式制作增加 compose、宿主渲染与检查，再登记 complete。不能只检查底图就宣布页面完成；详见 [可编辑图文](editable-composition.md)。
+
 本文件用于整套制作、恢复中断项目或调整用户参与程度。命令中的 `A4P` 代表入口脚本，不是要求用户自行安装的别名。
 
 ## 选择推进方式

@@ -1,4 +1,7 @@
 interface:
   display_name: "Agent4PPT"
-  short_description: "Generate coherent image-led decks with resumable jobs"
-  default_prompt: "Use $agent4ppt-skill to create a visual presentation and verify the exported PPTX."
+  short_description: "Full-slide generation and visually matched editable PPT"
+  default_prompt: "Use $agent4ppt-skill to generate complete slides, then create editable versions with image-model text removal, PowerPoint MCP restoration and visual comparison."
+
+policy:
+  allow_implicit_invocation: true

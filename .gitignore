@@ -14,3 +14,7 @@ dist/
 build/
 *.egg-info/
 test-output/
+
+# Local production materials and generated deliverables may contain private content.
+/work/
+/outputs/

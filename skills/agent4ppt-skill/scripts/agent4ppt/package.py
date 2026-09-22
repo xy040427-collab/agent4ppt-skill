@@ -69,11 +69,12 @@ def media(path, max_bytes=None):
         raise ValueError('Image cannot fit requested byte budget without excessive degradation')
 
 
-def export_pptx(images, output, ratio='16:9', notes=None, title='Presentation', max_bytes=None):
+def export_pptx(images, output, ratio='16:9', notes=None, title='Presentation', max_bytes=None, overlays=None, native_text=None):
     if ratio not in ('16:9', '4:3') or not images:
         raise ValueError('Nonempty images and 16:9 or 4:3 ratio required')
     width, height = 9144000, (5143500 if ratio == '16:9' else 6858000)
     notes = notes or {}
+    overlays = overlays or {}
     parts, overrides = {}, {}
 
     def add(name, data, kind=None):
@@ -84,7 +85,7 @@ def export_pptx(images, output, ratio='16:9', notes=None, title='Presentation', 
     add('_rels/.rels', relationships([('officeDocument', 'ppt/presentation.xml')]))
     ids = ''.join(f'<p:sldId id="{255+i}" r:id="rId{i+2}"/>' for i in range(1, len(images)+1))
     add('ppt/presentation.xml', xml(f'<p:presentation {NS}><p:sldMasterIdLst><p:sldMasterId id="2147483648" r:id="rId1"/></p:sldMasterIdLst>'
-        f'<p:notesMasterIdLst><p:notesMasterId r:id="rId2"/></p:notesMasterIdLst><p:sldIdLst>{ids}</p:sldIdLst>'
+        f'<p:sldIdLst>{ids}</p:sldIdLst>'
         f'<p:sldSz cx="{width}" cy="{height}"/><p:notesSz cx="6858000" cy="9144000"/></p:presentation>'), 'presentationml.presentation.main')
     add('ppt/_rels/presentation.xml.rels', relationships([('slideMaster', 'slideMasters/slideMaster1.xml'),
         ('notesMaster', 'notesMasters/notesMaster1.xml')] + [('slide', f'slides/slide{i}.xml') for i in range(1, len(images)+1)]))
@@ -111,8 +112,22 @@ def export_pptx(images, output, ratio='16:9', notes=None, title='Presentation', 
         picture = (f'<p:pic><p:nvPicPr><p:cNvPr id="2" name="Page {i}" descr="{html.escape(title, quote=True)}"/><p:cNvPicPr><a:picLocks noChangeAspect="1"/></p:cNvPicPr><p:nvPr/></p:nvPicPr>'
                    '<p:blipFill><a:blip r:embed="rId2"/><a:stretch><a:fillRect/></a:stretch></p:blipFill>'
                    f'<p:spPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="{width}" cy="{height}"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></p:spPr></p:pic>')
-        add(f'ppt/slides/slide{i}.xml', xml(f'<p:sld {NS}><p:cSld><p:spTree>{group()}{picture}</p:spTree></p:cSld><p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr></p:sld>'), 'presentationml.slide')
         rels = [('slideLayout', '../slideLayouts/slideLayout1.xml'), ('image', f'../media/page{i}.{extension}')]
+        native = ''
+        from .composition import text_shape, image_shape, verify_assets
+        verify_assets(overlays.get(i, []))
+        for identity, item in enumerate(overlays.get(i, []), 3):
+            if item['type'] == 'text':
+                native += text_shape(item, identity, width, height)
+            else:
+                asset, ext = media(item['path'], max_bytes)
+                target = f'overlay{i}-{identity}.{ext}'
+                parts[f'ppt/media/{target}'] = asset
+                rels.append(('image', f'../media/{target}'))
+                native += image_shape(item, identity, len(rels), width, height)
+        if native_text and i in native_text:
+            native = native_text[i]
+        add(f'ppt/slides/slide{i}.xml', xml(f'<p:sld {NS}><p:cSld><p:spTree>{group()}{picture}{native}</p:spTree></p:cSld><p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr></p:sld>'), 'presentationml.slide')
         if notes.get(i):
             rels.append(('notesSlide', f'../notesSlides/notesSlide{i}.xml'))
             paragraphs = ''.join(f'<a:p><a:r><a:rPr lang="zh-CN"/><a:t>{html.escape(line)}</a:t></a:r></a:p>' for line in notes[i].split('\n'))
@@ -148,9 +163,21 @@ def export_project(project, output=None, max_bytes=None):
         for row,image in zip(rows,images):
             if digest(image)!=row['sha256']:
                 raise ValueError(f'Page {row["number"]} image changed after QA')
+        import json
+        layers, native_text = {}, {}
+        if brief.get('mode') == 'editable':
+            for row in rows:
+                review = project.verify_review(db, row['number'])
+                layers[row['number']] = json.loads(row['spec'])['overlays']
+                if review.get('native_draft'):
+                    from .native import read_text_shapes
+                    native_text[row['number']] = read_text_shapes((project.root/review['draft']).read_bytes(),
+                        layers[row['number']], row['sha256'], brief['ratio'])
         path = project.root / 'notes.md'
         notes = parse_notes(path.read_text(encoding='utf-8')) if path.exists() else {}
-        result = export_pptx(images, output or project.root/'presentation.pptx', brief['ratio'], notes, brief['title'], max_bytes)
+        if native_text and max_bytes is not None:
+            raise ValueError('Reviewed native pages must retain their background bytes; omit image compression')
+        result = export_pptx(images, output or project.root/'presentation.pptx', brief['ratio'], notes, brief['title'], max_bytes, layers, native_text)
         project.event(db, None, 'exported', result)
     return result
 
